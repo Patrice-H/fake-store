@@ -4,20 +4,20 @@
     <span class="chevron"> > </span>
     <span>products</span>
     <span class="chevron"> > </span>
-    <span>{{ category }}</span>
+    <span>{{ product.category }}</span>
   </p>
-  <h1>{{ title }}</h1>
+  <h1>{{ product.title }}</h1>
   <div class="detail">
     <div class="detail-image">
-      <img src="{{ image }}" alt="{{ title }}" />
+      <img src="{{ product.image }}" alt="{{ product.title }}" />
     </div>
     <div class="detail-text">
       <p>
         <span class="subtitle">Description : </span>
-        <span>{{ description }}</span>
+        <span>{{ product.description }}</span>
       </p>
       <p class="price">
-        <span>{{ price }}</span>
+        <span>{{ product.price }}</span>
         <span> US$</span>
       </p>
       <button type="button">Add to cart</button>
