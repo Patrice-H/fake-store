@@ -1,9 +1,26 @@
-<h1>{{ title }}</h1>
-<div>
-  <img src="{{ image }}" alt="{{ title }}" />
-</div>
-<p>{{ description }}</p>
-<p>
-  <span>{{ price }}</span>
-  <span> US$</span>
-</p>
+<section>
+  <p class="secondary-links">
+    <img src="../../assets/home.png" alt="go to home page" />
+    <span class="chevron"> > </span>
+    <span>products</span>
+    <span class="chevron"> > </span>
+    <span>{{ category }}</span>
+  </p>
+  <h1>{{ title }}</h1>
+  <div class="detail">
+    <div class="detail-image">
+      <img src="{{ image }}" alt="{{ title }}" />
+    </div>
+    <div class="detail-text">
+      <p>
+        <span class="subtitle">Description : </span>
+        <span>{{ description }}</span>
+      </p>
+      <p class="price">
+        <span>{{ price }}</span>
+        <span> US$</span>
+      </p>
+      <button type="button">Add to cart</button>
+    </div>
+  </div>
+</section>
