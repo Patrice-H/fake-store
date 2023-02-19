@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
       'iPhone 9',
       'An apple mobile which is nothing like apple',
       549,
+      12.96,
       'smartphones',
       'https://i.dummyjson.com/data/products/1/thumbnail.jpg',
       [
