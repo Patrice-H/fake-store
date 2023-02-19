@@ -11,11 +11,18 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.product = new Product(
       1,
-      'Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops',
-      109.95,
-      'Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday',
-      "men's clothing",
-      'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg'
+      'iPhone 9',
+      'An apple mobile which is nothing like apple',
+      549,
+      'smartphones',
+      'https://i.dummyjson.com/data/products/1/thumbnail.jpg',
+      [
+        'https://i.dummyjson.com/data/products/1/1.jpg',
+        'https://i.dummyjson.com/data/products/1/2.jpg',
+        'https://i.dummyjson.com/data/products/1/3.jpg',
+        'https://i.dummyjson.com/data/products/1/4.jpg',
+        'https://i.dummyjson.com/data/products/1/thumbnail.jpg',
+      ]
     );
   }
 }
