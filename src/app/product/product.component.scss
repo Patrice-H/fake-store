@@ -62,6 +62,20 @@ h1 {
   font-size: 18px;
   font-weight: bold;
 }
+.discount {
+  width: fit-content;
+  margin: auto;
+  padding: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  background-color: yellow;
+}
+.high-price {
+  text-align: center;
+  font-size: 14px;
+  text-decoration: line-through;
+  color: gray;
+}
 .price {
   text-align: center;
   font-size: 24px;
