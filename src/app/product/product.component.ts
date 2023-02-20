@@ -9,9 +9,14 @@ import { Product } from '../models/product.model';
 export class ProductComponent implements OnInit {
   @Input() product!: Product;
   currentRubric!: string;
+  highPrice!: number;
 
   ngOnInit() {
     this.currentRubric = this.getRubric(this.product.category);
+    this.highPrice = this.getHighPrice(
+      this.product.price,
+      this.product.discountPercentage
+    );
   }
 
   getRubric(category: string): string {
@@ -37,5 +42,11 @@ export class ProductComponent implements OnInit {
       default:
         return 'other';
     }
+  }
+
+  getHighPrice(price: number, discount: number): number {
+    const hp = price / (1 - discount / 100);
+
+    return parseFloat(hp.toFixed(2));
   }
 }
