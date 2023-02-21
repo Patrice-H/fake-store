@@ -9,7 +9,7 @@
   <h1>{{ product.title }}</h1>
   <div class="detail">
     <div class="detail-image">
-      <img src="{{ product.thumbnail }}" alt="{{ product.title }}" />
+      <img src="{{ displayedImage }}" alt="{{ product.title }}" />
     </div>
     <div class="detail-text">
       <p>
@@ -30,5 +30,15 @@
       </p>
       <button type="button">Add to cart</button>
     </div>
+  </div>
+  <div class="thumbnail">
+    <img
+      *ngFor="let image of product.image; index as i"
+      src="{{ product.image[i] }}"
+      alt="{{ product.title }}"
+      class="{{ getThumbClasses(i) }}"
+      id="thumb-{{ i }}"
+      (click)="setActive(i)"
+    />
   </div>
 </section>

@@ -1,5 +1,6 @@
 section {
   padding: 0 50px;
+  position: relative;
   font-family: "Roboto";
 }
 h1 {
@@ -23,7 +24,8 @@ h1 {
 .detail-image {
   grid-column: 1/3;
   img {
-    width: 100%;
+    width: 57vw;
+    height: 30vw;
   }
 }
 .detail-text {
@@ -81,4 +83,25 @@ h1 {
   font-size: 24px;
   font-weight: bold;
   color: red;
+}
+.thumbnail {
+  margin-top: 20px;
+  display: inline-flex;
+  max-width: 100%;
+  gap: 20px;
+}
+.thumbnail-img {
+  width: 15%;
+  margin: 0;
+  border: 4px white solid;
+  cursor: pointer;
+}
+.thumbnail-img:hover {
+  opacity: 0.6;
+}
+.active-thumbnail {
+  border: 4px #ba00ba solid;
+}
+.active-thumbnail:hover {
+  opacity: 1;
 }
