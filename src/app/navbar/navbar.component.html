@@ -1,0 +1,46 @@
+<div>
+    <button mat-button [matMenuTriggerFor]="menu_woman" class="rubric">Woman</button>
+    <mat-menu #menu_woman="matMenu">
+      <button mat-menu-item>Tops</button>
+      <button mat-menu-item>Dresses</button>
+      <button mat-menu-item>Shoes</button>
+    </mat-menu>
+    <button mat-button [matMenuTriggerFor]="menu_man" class="rubric">Man</button>
+    <mat-menu #menu_man="matMenu">
+      <button mat-menu-item>Shirts</button>
+      <button mat-menu-item>Shoes</button>
+    </mat-menu>
+    <button mat-button [matMenuTriggerFor]="menu_Accessory" class="rubric">Accessory</button>
+    <mat-menu #menu_Accessory="matMenu">
+      <button mat-menu-item>Men Watch</button>
+      <button mat-menu-item>Women Watch</button>
+      <button mat-menu-item>Women Bag</button>
+      <button mat-menu-item>Women Jewellery</button>
+      <button mat-menu-item>Sunglasses</button>
+    </mat-menu>
+    <button mat-button [matMenuTriggerFor]="menu_home" class="rubric">Home</button>
+    <mat-menu #menu_home="matMenu">
+      <button mat-menu-item>Decoration</button>
+      <button mat-menu-item>Lighting</button>
+      <button mat-menu-item>Furniture</button>
+    </mat-menu>
+    <button mat-button [matMenuTriggerFor]="menu_hightech" class="rubric">High Tech</button>
+    <mat-menu #menu_hightech="matMenu">
+      <button mat-menu-item>Smartphone</button>
+      <button mat-menu-item>Laptop</button>
+    </mat-menu>
+    <button mat-button [matMenuTriggerFor]="menu_automoto" class="rubric">Auto Moto</button>
+    <mat-menu #menu_automoto="matMenu">
+      <button mat-menu-item>Automotive</button>
+      <button mat-menu-item>Motorcycle</button>
+    </mat-menu>
+    <button mat-button [matMenuTriggerFor]="menu_cosmetic" class="rubric">Cosmetic</button>
+    <mat-menu #menu_cosmetic="matMenu">
+      <button mat-menu-item>Fragance</button>
+      <button mat-menu-item>Skincare</button>
+    </mat-menu>
+    <button mat-button [matMenuTriggerFor]="menu_others" class="rubric">Others</button>
+    <mat-menu #menu_others="matMenu">
+      <button mat-menu-item>Grocery</button>
+    </mat-menu>
+  </div>  
