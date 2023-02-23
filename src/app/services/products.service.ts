@@ -70,4 +70,110 @@ export class ProductsService {
       throw new Error('Product not found');
     }
   }
+
+  getProductsByRubric(rubric: string): Product[] {
+    let products: Product[] = [];
+    switch (rubric) {
+      case 'high-tech':
+        const smartphones = this.getProductsByCategory('smartphones');
+        const laptops = this.getProductsByCategory('laptops');
+        smartphones.forEach((product) => {
+          products.push(product);
+        });
+        laptops.forEach((product) => {
+          products.push(product);
+        });
+        break;
+      case 'home':
+        const homeDecoration = this.getProductsByCategory('home-decoration');
+        const lighting = this.getProductsByCategory('lighting');
+        const furniture = this.getProductsByCategory('furniture');
+        homeDecoration.forEach((product) => {
+          products.push(product);
+        });
+        lighting.forEach((product) => {
+          products.push(product);
+        });
+        furniture.forEach((product) => {
+          products.push(product);
+        });
+        break;
+      case 'cosmetic':
+        const fragances = this.getProductsByCategory('fragances');
+        const skincare = this.getProductsByCategory('skincare');
+        fragances.forEach((product) => {
+          products.push(product);
+        });
+        skincare.forEach((product) => {
+          products.push(product);
+        });
+        break;
+      case 'auto-moto':
+        const automotive = this.getProductsByCategory('automotive');
+        const motorcycle = this.getProductsByCategory('motorcycle');
+        automotive.forEach((product) => {
+          products.push(product);
+        });
+        motorcycle.forEach((product) => {
+          products.push(product);
+        });
+        break;
+      case 'man':
+        const mensShirts = this.getProductsByCategory('mens-shirts');
+        const mensShoes = this.getProductsByCategory('mens-shoes');
+        mensShirts.forEach((product) => {
+          products.push(product);
+        });
+        mensShoes.forEach((product) => {
+          products.push(product);
+        });
+        break;
+      case 'woman':
+        const tops = this.getProductsByCategory('tops');
+        const womensDresses = this.getProductsByCategory('womens-dresses');
+        const womensShoes = this.getProductsByCategory('womens-shoes');
+        tops.forEach((product) => {
+          products.push(product);
+        });
+        womensDresses.forEach((product) => {
+          products.push(product);
+        });
+        womensShoes.forEach((product) => {
+          products.push(product);
+        });
+        break;
+      case 'accessory':
+        const mensWatches = this.getProductsByCategory('mens-watches');
+        const womensWatches = this.getProductsByCategory('womens-watches');
+        const womensBags = this.getProductsByCategory('womens-bags');
+        const womensJewellery = this.getProductsByCategory('womens-jewellery');
+        const sunglasses = this.getProductsByCategory('sunglasses');
+        mensWatches.forEach((product) => {
+          products.push(product);
+        });
+        womensWatches.forEach((product) => {
+          products.push(product);
+        });
+        womensBags.forEach((product) => {
+          products.push(product);
+        });
+        womensJewellery.forEach((product) => {
+          products.push(product);
+        });
+        sunglasses.forEach((product) => {
+          products.push(product);
+        });
+        break;
+      case 'other':
+        const groceries = this.getProductsByCategory('groceries');
+        groceries.forEach((product) => {
+          products.push(product);
+        });
+        break;
+      default:
+        throw new Error('Rubric not found');
+    }
+
+    return products;
+  }
 }
