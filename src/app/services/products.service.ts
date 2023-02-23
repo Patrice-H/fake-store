@@ -61,4 +61,13 @@ export class ProductsService {
   getProductsByCategory(cat: string): Product[] {
     return this.products.filter((product) => product.category === cat);
   }
+
+  getProductsById(id: number): Product {
+    const product = this.products.find((product) => product.id === id);
+    if (product) {
+      return product;
+    } else {
+      throw new Error('Product not found');
+    }
+  }
 }
