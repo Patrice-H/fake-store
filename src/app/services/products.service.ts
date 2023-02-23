@@ -62,7 +62,7 @@ export class ProductsService {
     return this.products.filter((product) => product.category === cat);
   }
 
-  getProductsById(id: number): Product {
+  getProductById(id: number): Product {
     const product = this.products.find((product) => product.id === id);
     if (product) {
       return product;
