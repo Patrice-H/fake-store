@@ -57,4 +57,8 @@ export class ProductsService {
   getAllProducts(): Product[] {
     return this.products;
   }
+
+  getProductsByCategory(cat: string): Product[] {
+    return this.products.filter((product) => product.category === cat);
+  }
 }
