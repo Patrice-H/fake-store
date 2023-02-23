@@ -53,4 +53,8 @@ export class ProductsService {
       ]
     ),
   ];
+
+  getAllProducts(): Product[] {
+    return this.products;
+  }
 }
