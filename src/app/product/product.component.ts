@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Product } from '../models/product.model';
+import { ProductsService } from '../services/products.service';
 
 @Component({
   selector: 'app-product',
@@ -7,18 +8,26 @@ import { Product } from '../models/product.model';
   styleUrls: ['./product.component.scss'],
 })
 export class ProductComponent implements OnInit {
-  @Input() product!: Product;
+  product!: Product;
   currentRubric!: string;
   highPrice!: number;
   displayedImage!: string;
 
+  constructor(private productsService: ProductsService) {}
+
   ngOnInit() {
+    this.product = this.getProductDetails();
     this.currentRubric = this.getRubric(this.product.category);
     this.highPrice = this.getHighPrice(
       this.product.price,
       this.product.discountPercentage
     );
     this.displayedImage = this.product.image[this.product.image.length - 1];
+  }
+
+  getProductDetails(): Product {
+    const id = parseInt(window.location.href.split('/')[4]);
+    return this.productsService.getProductById(id);
   }
 
   getRubric(category: string): string {
