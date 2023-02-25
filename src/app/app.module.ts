@@ -10,6 +10,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HeaderComponent } from './header/header.component';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { ProductsListComponent } from './products-list/products-list.component';
+import { Error404Component } from './error404/error404.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ProductsListComponent } from './products-list/products-list.component';
     NavbarComponent,
     HeaderComponent,
     ProductCardComponent,
-    ProductsListComponent
+    ProductsListComponent,
+    Error404Component
   ],
   imports: [
     BrowserModule,
