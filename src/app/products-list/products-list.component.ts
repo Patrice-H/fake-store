@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Product } from '../models/product.model';
 import { ProductsService } from '../services/products.service';
 
@@ -13,6 +14,16 @@ export class ProductsListComponent implements OnInit {
   constructor(private productsService: ProductsService) {}
 
   ngOnInit(): void {
-    this.productList = this.productsService.getAllProducts();
+    this.getProducts();
+  }
+
+  getProducts(): void {
+    const selectedMenu = window.location.href.split('/')[3];
+    if (selectedMenu === '') {
+      this.productList = this.productsService.getAllProducts();
+    } else {
+      this.productList =
+        this.productsService.getProductsByCategory(selectedMenu);
+    }
   }
 }
