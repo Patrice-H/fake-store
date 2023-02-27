@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from '../models/product.model';
 import { ProductsService } from '../services/products.service';
+import { CATEGORIES, RUBRICS } from 'src/data/constants';
 
 @Component({
   selector: 'app-breadcrumb',
@@ -9,37 +10,8 @@ import { ProductsService } from '../services/products.service';
   styleUrls: ['./breadcrumb.component.scss'],
 })
 export class BreadcrumbComponent implements OnInit {
-  rubrics: string[] = [
-    'high-tech',
-    'home',
-    'cosmetic',
-    'auto-moto',
-    'women',
-    'men',
-    'accessory',
-    'others',
-  ];
-  categories: string[] = [
-    'smartphones',
-    'laptops',
-    'home-decoration',
-    'lighting',
-    'furniture',
-    'fragances',
-    'skincare',
-    'automotive',
-    'motorcycle',
-    'mens-shirts',
-    'mens-shoes',
-    'womens-dresses',
-    'womens-shoes',
-    'mens-watches',
-    'womens-watches',
-    'womens-bags',
-    'womens-jewellery',
-    'sunglasses',
-    'groceries',
-  ];
+  rubrics: string[] = RUBRICS;
+  categories: string[] = CATEGORIES;
   currentRubric!: string | undefined;
   currentCategory!: string | undefined;
   product!: Product | undefined;
