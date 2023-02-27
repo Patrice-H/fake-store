@@ -9,7 +9,6 @@ import { ProductsService } from '../services/products.service';
 })
 export class ProductComponent implements OnInit {
   product!: Product;
-  currentRubric!: string;
   highPrice!: number;
   displayedImage!: string;
 
@@ -17,7 +16,6 @@ export class ProductComponent implements OnInit {
 
   ngOnInit() {
     this.product = this.getProductDetails();
-    this.currentRubric = this.getRubric(this.product.category);
     this.highPrice = this.getHighPrice(
       this.product.price,
       this.product.discountPercentage
@@ -28,31 +26,6 @@ export class ProductComponent implements OnInit {
   getProductDetails(): Product {
     const id = parseInt(window.location.href.split('/')[4]);
     return this.productsService.getProductById(id);
-  }
-
-  getRubric(category: string): string {
-    switch (category) {
-      case 'smartphones' || 'laptops':
-        return 'high-tech';
-      case 'home-decoration' || 'lighting' || 'furniture':
-        return 'home';
-      case 'fragances' || 'skincare':
-        return 'cosmetic';
-      case 'automotive' || 'motorcycle':
-        return 'auto-moto';
-      case 'mens-shirts' || 'mens-shoes':
-        return 'man';
-      case 'tops' || 'womens-dresses' || 'womens-shoes':
-        return 'woman';
-      case 'mens-watches' ||
-        'womens-watches' ||
-        'womens-bags' ||
-        'womens-jewellery' ||
-        'sunglasses':
-        return 'accessory';
-      default:
-        return 'other';
-    }
   }
 
   getHighPrice(price: number, discount: number): number {
