@@ -6,6 +6,14 @@ import { ProductsListComponent } from './products-list/products-list.component';
 
 const routes: Routes = [
   { path: '', component: ProductsListComponent },
+  { path: 'high-tech', component: ProductsListComponent },
+  { path: 'home', component: ProductsListComponent },
+  { path: 'cosmetic', component: ProductsListComponent },
+  { path: 'auto-moto', component: ProductsListComponent },
+  { path: 'men', component: ProductsListComponent },
+  { path: 'women', component: ProductsListComponent },
+  { path: 'accessory', component: ProductsListComponent },
+  { path: 'others', component: ProductsListComponent },
   { path: 'smartphones', component: ProductsListComponent },
   { path: 'laptops', component: ProductsListComponent },
   { path: 'home-decoration', component: ProductsListComponent },
