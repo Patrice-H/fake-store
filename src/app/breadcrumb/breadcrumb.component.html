@@ -1,0 +1,21 @@
+<p *ngIf="isBreadCrumbNecessary()" class="breadcrumb">
+  <img
+    src="../../assets/home.png"
+    alt="go to home page"
+    class="reactive-link"
+    (click)="goToHomePage()"
+  />
+  <span class="chevron"> > </span>
+  <span class="reactive-link">{{ currentRubric }}</span>
+  <span *ngIf="isProductPage() || isCategoryPage()" class="chevron"> > </span>
+  <span
+    *ngIf="isProductPage() || isCategoryPage()"
+    class="reactive-link"
+    (click)="goToCategoryPage()"
+    >{{ currentCategory }}</span
+  >
+  <span *ngIf="isProductPage()" class="chevron"> > </span>
+  <span *ngIf="isProductPage()" class="reactive-link">{{
+    product?.title
+  }}</span>
+</p>

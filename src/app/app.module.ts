@@ -11,6 +11,7 @@ import { HeaderComponent } from './header/header.component';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { Error404Component } from './error404/error404.component';
+import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { Error404Component } from './error404/error404.component';
     HeaderComponent,
     ProductCardComponent,
     ProductsListComponent,
-    Error404Component
+    Error404Component,
+    BreadcrumbComponent
   ],
   imports: [
     BrowserModule,
