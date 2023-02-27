@@ -20,6 +20,7 @@ export const CATEGORIES: string[] = [
   'motorcycle',
   'mens-shirts',
   'mens-shoes',
+  'tops',
   'womens-dresses',
   'womens-shoes',
   'mens-watches',
