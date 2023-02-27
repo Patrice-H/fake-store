@@ -32,21 +32,39 @@ export class BreadcrumbComponent implements OnInit {
         return 'high-tech';
       case 'laptops':
         return 'high-tech';
-      case 'home-decoration' || 'lighting' || 'furniture':
+      case 'home-decoration':
         return 'home';
-      case 'fragances' || 'skincare':
+      case 'lighting':
+        return 'home';
+      case 'furniture':
+        return 'home';
+      case 'fragances':
         return 'cosmetic';
-      case 'automotive' || 'motorcycle':
+      case 'skincare':
+        return 'cosmetic';
+      case 'automotive':
         return 'auto-moto';
-      case 'mens-shirts' || 'mens-shoes':
-        return 'man';
-      case 'tops' || 'womens-dresses' || 'womens-shoes':
-        return 'woman';
-      case 'mens-watches' ||
-        'womens-watches' ||
-        'womens-bags' ||
-        'womens-jewellery' ||
-        'sunglasses':
+      case 'motorcycle':
+        return 'auto-moto';
+      case 'mens-shirts':
+        return 'men';
+      case 'mens-shoes':
+        return 'men';
+      case 'womens-shoes':
+        return 'women';
+      case 'tops':
+        return 'women';
+      case 'womens-dresses':
+        return 'women';
+      case 'mens-watches':
+        return 'accessory';
+      case 'womens-watches':
+        return 'accessory';
+      case 'womens-bags':
+        return 'accessory';
+      case 'womens-jewellery':
+        return 'accessory';
+      case 'sunglasses':
         return 'accessory';
       case 'groceries':
         return 'others';
@@ -118,15 +136,7 @@ export class BreadcrumbComponent implements OnInit {
 
     return false;
   }
-  /*
-  isBreadCrumbNecessary(): boolean {
-    if (this.isCategoryPage() || this.isRubricPage() || this.isProductPage()) {
-      return true;
-    }
 
-    return false;
-  }
-  */
   goToHomePage(): void {
     this.router.navigate(['']);
   }
