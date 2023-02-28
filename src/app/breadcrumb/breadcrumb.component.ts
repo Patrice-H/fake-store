@@ -141,6 +141,10 @@ export class BreadcrumbComponent implements OnInit {
     this.router.navigate(['']);
   }
 
+  goToRubricPage(): void {
+    this.router.navigate([`/${this.currentRubric}`]);
+  }
+
   goToCategoryPage(): void {
     this.router.navigate([`/${this.currentCategory}`]);
   }

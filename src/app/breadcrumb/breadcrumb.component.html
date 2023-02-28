@@ -6,7 +6,9 @@
     (click)="goToHomePage()"
   />
   <span class="chevron"> > </span>
-  <span class="reactive-link">{{ currentRubric }}</span>
+  <span class="reactive-link" (click)="goToRubricPage()">{{
+    currentRubric
+  }}</span>
   <span *ngIf="isProductPage() || isCategoryPage()" class="chevron"> > </span>
   <span
     *ngIf="isProductPage() || isCategoryPage()"
