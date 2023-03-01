@@ -54,7 +54,7 @@ export class ProductsService {
       4.26,
       65,
       'Impression of Acqua Di Gio',
-      'fragances',
+      'fragrances',
       'https://i.dummyjson.com/data/products/11/thumbnail.jpg',
       [
         'https://i.dummyjson.com/data/products/11/1.jpg',

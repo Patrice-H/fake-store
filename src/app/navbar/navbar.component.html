@@ -68,7 +68,9 @@
     Cosmetic
   </button>
   <mat-menu #menu_cosmetic="matMenu">
-    <button mat-menu-item (click)="showProducts('fragances')">Fragances</button>
+    <button mat-menu-item (click)="showProducts('fragrances')">
+      Fragrances
+    </button>
     <button mat-menu-item (click)="showProducts('skincare')">Skincare</button>
   </mat-menu>
   <button mat-button [matMenuTriggerFor]="menu_others" class="rubric">

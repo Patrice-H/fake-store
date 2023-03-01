@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'home-decoration', component: ProductsListComponent },
   { path: 'lighting', component: ProductsListComponent },
   { path: 'furniture', component: ProductsListComponent },
-  { path: 'fragances', component: ProductsListComponent },
+  { path: 'fragrances', component: ProductsListComponent },
   { path: 'skincare', component: ProductsListComponent },
   { path: 'automotive', component: ProductsListComponent },
   { path: 'motorcycle', component: ProductsListComponent },
