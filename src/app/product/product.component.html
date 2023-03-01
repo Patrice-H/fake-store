@@ -26,8 +26,8 @@
   </div>
   <div class="thumbnail">
     <img
-      *ngFor="let image of product.image; index as i"
-      src="{{ product.image[i] }}"
+      *ngFor="let image of product.images; index as i"
+      src="{{ product.images[i] }}"
       alt="{{ product.title }}"
       class="{{ getThumbClasses(i) }}"
       id="thumb-{{ i }}"

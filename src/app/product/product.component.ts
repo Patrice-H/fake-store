@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Product } from '../models/product.model';
 import { ProductsService } from '../services/products.service';
 
@@ -20,7 +20,7 @@ export class ProductComponent implements OnInit {
       this.product.price,
       this.product.discountPercentage
     );
-    this.displayedImage = this.product.image[this.product.image.length - 1];
+    this.displayedImage = this.product.images[this.product.images.length - 1];
   }
 
   getProductDetails(): Product {
@@ -36,7 +36,7 @@ export class ProductComponent implements OnInit {
 
   getThumbClasses(id: number): string {
     let classes = 'thumbnail-img';
-    if (id === this.product.image.length - 1) {
+    if (id === this.product.images.length - 1) {
       classes += ' active-thumbnail';
     }
 
@@ -52,6 +52,6 @@ export class ProductComponent implements OnInit {
       thumbnail.classList.remove('active-thumbnail');
     });
     activeThumb?.classList.add('active-thumbnail');
-    this.displayedImage = this.product.image[id];
+    this.displayedImage = this.product.images[id];
   }
 }

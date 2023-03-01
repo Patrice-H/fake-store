@@ -12,6 +12,9 @@ export class ProductsService {
       'An apple mobile which is nothing like apple',
       549,
       12.96,
+      4.69,
+      94,
+      'Apple',
       'smartphones',
       'https://i.dummyjson.com/data/products/1/thumbnail.jpg',
       [
@@ -28,6 +31,9 @@ export class ProductsService {
       'MacBook Pro 2021 with mini-LED display may launch between September, November',
       1749,
       11.02,
+      4.57,
+      83,
+      'Apple',
       'laptops',
       'https://i.dummyjson.com/data/products/6/thumbnail.png',
       [
@@ -43,6 +49,9 @@ export class ProductsService {
       'Mega Discount, Impression of Acqua Di Gio by GiorgioArmani concentrated attar perfume Oil',
       13,
       8.4,
+      4.26,
+      65,
+      'Impression of Acqua Di Gio',
       'fragances',
       'https://i.dummyjson.com/data/products/11/thumbnail.jpg',
       [
