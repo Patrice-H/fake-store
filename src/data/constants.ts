@@ -1,35 +1,3 @@
-export const RUBRICS: string[] = [
-  'high-tech',
-  'home',
-  'cosmetic',
-  'auto-moto',
-  'women',
-  'men',
-  'accessory',
-  'others',
-];
-export const CATEGORIES: string[] = [
-  'smartphones',
-  'laptops',
-  'home-decoration',
-  'lighting',
-  'furniture',
-  'fragances',
-  'skincare',
-  'automotive',
-  'motorcycle',
-  'mens-shirts',
-  'mens-shoes',
-  'tops',
-  'womens-dresses',
-  'womens-shoes',
-  'mens-watches',
-  'womens-watches',
-  'womens-bags',
-  'womens-jewellery',
-  'sunglasses',
-  'groceries',
-];
 export const RUBRIC_CATEGORIES: any[] = [
   {
     name: 'high-tech',
@@ -41,7 +9,7 @@ export const RUBRIC_CATEGORIES: any[] = [
   },
   {
     name: 'cosmetic',
-    categories: ['fragances', 'skincare'],
+    categories: ['fragrances', 'skincare'],
   },
   {
     name: 'auto-moto',

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from '../models/product.model';
 import { ProductsService } from '../services/products.service';
-import { CATEGORIES, RUBRICS } from 'src/data/constants';
+import { RUBRIC_CATEGORIES } from 'src/data/constants';
 
 @Component({
   selector: 'app-breadcrumb',
@@ -10,8 +10,8 @@ import { CATEGORIES, RUBRICS } from 'src/data/constants';
   styleUrls: ['./breadcrumb.component.scss'],
 })
 export class BreadcrumbComponent implements OnInit {
-  rubrics: string[] = RUBRICS;
-  categories: string[] = CATEGORIES;
+  rubrics!: string[];
+  categories!: string[];
   currentRubric!: string | undefined;
   currentCategory!: string | undefined;
   product!: Product | undefined;
@@ -22,8 +22,30 @@ export class BreadcrumbComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.rubrics = this.getAllRubrics();
+    this.categories = this.getAllCategories();
     this.getCurrentElements();
     window.addEventListener('click', () => this.getCurrentElements());
+  }
+
+  getAllRubrics(): string[] {
+    let rubrics: string[] = [];
+    RUBRIC_CATEGORIES.forEach((rubric) => {
+      rubrics.push(rubric.name);
+    });
+
+    return rubrics;
+  }
+
+  getAllCategories(): string[] {
+    let categories: string[] = [];
+    RUBRIC_CATEGORIES.forEach((rubric) => {
+      rubric.categories.forEach((category: string) => {
+        categories.push(category);
+      });
+    });
+
+    return categories;
   }
 
   setCurrentRubric(category: string): string {
@@ -38,7 +60,7 @@ export class BreadcrumbComponent implements OnInit {
         return 'home';
       case 'furniture':
         return 'home';
-      case 'fragances':
+      case 'fragrances':
         return 'cosmetic';
       case 'skincare':
         return 'cosmetic';
