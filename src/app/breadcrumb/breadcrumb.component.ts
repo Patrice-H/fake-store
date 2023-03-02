@@ -49,50 +49,11 @@ export class BreadcrumbComponent implements OnInit {
   }
 
   setCurrentRubric(category: string): string {
-    switch (category) {
-      case 'smartphones':
-        return 'high-tech';
-      case 'laptops':
-        return 'high-tech';
-      case 'home-decoration':
-        return 'home';
-      case 'lighting':
-        return 'home';
-      case 'furniture':
-        return 'home';
-      case 'fragrances':
-        return 'cosmetic';
-      case 'skincare':
-        return 'cosmetic';
-      case 'automotive':
-        return 'auto-moto';
-      case 'motorcycle':
-        return 'auto-moto';
-      case 'mens-shirts':
-        return 'men';
-      case 'mens-shoes':
-        return 'men';
-      case 'womens-shoes':
-        return 'women';
-      case 'tops':
-        return 'women';
-      case 'womens-dresses':
-        return 'women';
-      case 'mens-watches':
-        return 'accessory';
-      case 'womens-watches':
-        return 'accessory';
-      case 'womens-bags':
-        return 'accessory';
-      case 'womens-jewellery':
-        return 'accessory';
-      case 'sunglasses':
-        return 'accessory';
-      case 'groceries':
-        return 'others';
-      default:
-        throw new Error("can't define rubric");
-    }
+    let element = RUBRIC_CATEGORIES.find((rubric) =>
+      rubric.categories.includes(category)
+    );
+
+    return element.name;
   }
 
   getCurrentElements(): void {
