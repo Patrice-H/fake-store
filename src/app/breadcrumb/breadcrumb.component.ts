@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Product } from '../models/product.model';
 import { ProductsService } from '../services/products.service';
 import { RUBRIC_CATEGORIES } from 'src/data/constants';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-breadcrumb',
@@ -14,7 +15,8 @@ export class BreadcrumbComponent implements OnInit {
   categories!: string[];
   currentRubric!: string | undefined;
   currentCategory!: string | undefined;
-  product!: Product | undefined;
+  product!: Product;
+  product$!: Observable<any>;
 
   constructor(
     private productsService: ProductsService,
@@ -66,9 +68,14 @@ export class BreadcrumbComponent implements OnInit {
       this.currentRubric = this.setCurrentRubric(this.currentCategory);
     }
     if (urlArray.length === 5 && urlArray[3] === 'product') {
-      this.product = this.productsService.getProductById(parseInt(urlArray[4]));
-      this.currentCategory = this.product.category;
-      this.currentRubric = this.setCurrentRubric(this.currentCategory);
+      this.product$ = this.productsService.getProductById(
+        parseInt(urlArray[4])
+      );
+      this.product$.subscribe((value) => {
+        this.product = value;
+        this.currentCategory = this.product.category;
+        this.currentRubric = this.setCurrentRubric(this.currentCategory);
+      });
     }
   }
 
