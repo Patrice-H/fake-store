@@ -1,4 +1,4 @@
-<section>
+<section *ngIf="product$ | async">
   <h1>{{ product.title }}</h1>
   <div class="detail">
     <div class="detail-image">

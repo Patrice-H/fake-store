@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Product } from '../models/product.model';
 import { ProductsService } from '../services/products.service';
 
@@ -9,23 +10,23 @@ import { ProductsService } from '../services/products.service';
 })
 export class ProductComponent implements OnInit {
   product!: Product;
+  product$!: Observable<any>;
   highPrice!: number;
   displayedImage!: string;
 
   constructor(private productsService: ProductsService) {}
 
   ngOnInit() {
-    this.product = this.getProductDetails();
-    this.highPrice = this.getHighPrice(
-      this.product.price,
-      this.product.discountPercentage
-    );
-    this.displayedImage = this.product.images[this.product.images.length - 1];
-  }
-
-  getProductDetails(): Product {
     const id = parseInt(window.location.href.split('/')[4]);
-    return this.productsService.getProductById(id);
+    this.product$ = this.productsService.getProductById(id);
+    this.product$.subscribe((value) => {
+      this.product = value;
+      this.highPrice = this.getHighPrice(
+        this.product.price,
+        this.product.discountPercentage
+      );
+      this.displayedImage = this.product.images[this.product.images.length - 1];
+    });
   }
 
   getHighPrice(price: number, discount: number): number {
