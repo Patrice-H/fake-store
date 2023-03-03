@@ -33,28 +33,28 @@ export class ProductsListComponent implements OnInit, OnDestroy {
     RUBRIC_CATEGORIES.forEach((rubric) => {
       rubrics.push(rubric.name);
     });
-    if (selectedMenu === '') {
+    if (selectedMenu === '' || rubrics.includes(selectedMenu)) {
       this.productList$ = this.productsService.getAllProducts();
-      this.productList$.pipe(takeUntil(this.destroy$)).subscribe((value) => {
-        this.productList = value.products;
-      });
-    } else if (rubrics.includes(selectedMenu)) {
-      let rubric: any | undefined = RUBRIC_CATEGORIES.find(
-        (rubric) => rubric.name === selectedMenu
-      );
-      this.productList$ = this.productsService.getAllProducts();
-      this.productList$.pipe(takeUntil(this.destroy$)).subscribe((value) => {
+    } else {
+      this.productList$ =
+        this.productsService.getProductsByCategory(selectedMenu);
+    }
+    this.setList(rubrics, selectedMenu);
+  }
+
+  setList(rubrics: string[], selectedMenu: string): void {
+    this.productList$.pipe(takeUntil(this.destroy$)).subscribe((value) => {
+      if (rubrics.includes(selectedMenu)) {
+        let rubric: any | undefined = RUBRIC_CATEGORIES.find(
+          (rubric) => rubric.name === selectedMenu
+        );
         this.productList = this.productsService.filterByRubric(
           value.products,
           rubric?.categories
         );
-      });
-    } else {
-      this.productList$ =
-        this.productsService.getProductsByCategory(selectedMenu);
-      this.productList$.pipe(takeUntil(this.destroy$)).subscribe((value) => {
+      } else {
         this.productList = value.products;
-      });
-    }
+      }
+    });
   }
 }
