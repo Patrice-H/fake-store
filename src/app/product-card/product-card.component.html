@@ -1,5 +1,6 @@
 <article class="product-card" (click)="showProductDetails(product.id)">
   <h1>{{ product.title }}</h1>
+  <app-ratings [vote]="product.rating"></app-ratings>
   <img src="{{ product.thumbnail }}" alt="{{ product.title }}" />
   <p class="card-description">
     <span class="card-subtitle">Description : </span>
