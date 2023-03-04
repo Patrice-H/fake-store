@@ -1,42 +1,45 @@
 .product-card {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    padding-bottom: 30px;
-    border-radius: 20px;
-    box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
-    &:hover {
-        cursor: pointer;
-        margin: -5px -5px 0 0;
-        box-shadow: 0 5px 16px rgba(0, 0, 0, 0.5);
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
+  &:hover {
+    cursor: pointer;
+    margin: -5px -5px 0 0;
+    box-shadow: 0 5px 16px rgba(0, 0, 0, 0.5);
   }
-    h1 {
-        text-align: center;
-        margin: 0;
-        padding-top: 20px;
-    }
-    img {
-        width: 80%;
-        margin: 15px auto;
-        display: block;
-        height: 250px;
-        object-fit: contain;
-    }
-}
-.card-description {
+  h1 {
+    text-align: center;
+    margin: 0;
+    padding-top: 20px;
+  }
+  img {
     width: 80%;
     margin: 15px auto;
+    display: block;
+    height: 250px;
+    object-fit: contain;
+  }
+}
+.card-description {
+  display: -webkit-box;
+  width: 80%;
+  margin: 15px auto 70px;
+  overflow: hidden;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 .card-subtitle {
-    font-weight: bold;
+  font-weight: bold;
 }
 .card-price {
-    position: absolute;
-    bottom: 25px;
-    width: 100%;
-    margin: auto;
-    text-align: center;
-    font-size: 24px;
-    font-weight: bold;
-    color: red;
+  position: absolute;
+  bottom: 25px;
+  width: 100%;
+  margin: auto;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: red;
 }
