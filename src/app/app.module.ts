@@ -13,6 +13,7 @@ import { ProductCardComponent } from './product-card/product-card.component';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { Error404Component } from './error404/error404.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+import { RatingsComponent } from './ratings/ratings.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
     ProductsListComponent,
     Error404Component,
     BreadcrumbComponent,
+    RatingsComponent,
   ],
   imports: [
     BrowserModule,
