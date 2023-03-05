@@ -25,13 +25,14 @@
     </div>
   </div>
   <div class="thumbnail">
-    <img
-      *ngFor="let image of product.images; index as i"
+    <div *ngFor="let image of product.images; index as i" 
+      class="{{ getThumbClasses(i) }}" 
+      id="thumb-{{ i }}"
+      (click)="setActive(i)">
+      <img
       src="{{ product.images[i] }}"
       alt="{{ product.title }}"
-      class="{{ getThumbClasses(i) }}"
-      id="thumb-{{ i }}"
-      (click)="setActive(i)"
     />
+    </div>
   </div>
 </section>

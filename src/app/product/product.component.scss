@@ -23,9 +23,14 @@ h1 {
 }
 .detail-image {
   grid-column: 1/3;
+  height: 33vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   img {
-    width: 57vw;
-    height: 30vw;
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
   }
 }
 .detail-text {
@@ -87,14 +92,22 @@ h1 {
 .thumbnail {
   margin-top: 20px;
   display: inline-flex;
-  max-width: 100%;
+  width: 100%;
   gap: 20px;
 }
 .thumbnail-img {
-  width: 15%;
+  display: flex;
+  align-items: center;
+  width: 10vw;
+  height: 10vw;
   margin: 0;
   border: 4px white solid;
   cursor: pointer;
+}
+.thumbnail-img img {
+  max-width: 100%;
+  max-height: 100%;
+  margin: auto;
 }
 .thumbnail-img:hover {
   opacity: 0.6;
