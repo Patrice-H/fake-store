@@ -1,0 +1,27 @@
+.filter {
+    width: 25%;
+    margin: auto;
+}
+.expansion-panel-title {
+    text-align: center;
+    font-weight: bold;
+}
+.brand-checkbox {
+    display: block;
+}
+.price-slider {
+    display: block;
+    width: 92%;
+    margin: auto;
+}
+.price-inputs {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    p {
+        margin: 10px 0 20px;
+    }
+}
+.input-price {
+    width: 50px;
+}
