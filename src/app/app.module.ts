@@ -3,6 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatMenuModule } from '@angular/material/menu';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatSliderModule} from '@angular/material/slider';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
@@ -14,6 +19,7 @@ import { ProductsListComponent } from './products-list/products-list.component';
 import { Error404Component } from './error404/error404.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { RatingsComponent } from './ratings/ratings.component';
+import { FilteringComponent } from './filtering/filtering.component';
 
 @NgModule({
   declarations: [
@@ -26,12 +32,18 @@ import { RatingsComponent } from './ratings/ratings.component';
     Error404Component,
     BreadcrumbComponent,
     RatingsComponent,
+    FilteringComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatMenuModule,
+    MatExpansionModule,
+    MatDividerModule,
+    MatCheckboxModule,
+    MatSliderModule,
+    FormsModule,
     HttpClientModule,
   ],
   providers: [],
