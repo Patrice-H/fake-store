@@ -1,0 +1,13 @@
+<mat-expansion-panel class="sorter">
+  <mat-expansion-panel-header>
+    <mat-panel-title> Sort by </mat-panel-title>
+  </mat-expansion-panel-header>
+  <mat-radio-group [(ngModel)]="sortChoice" (change)="setSortChoice()">
+    <mat-radio-button
+      *ngFor="let key of sortKeys"
+      value="{{ key.value }}"
+      class="sort-radio-btn"
+      >{{ key.label }}</mat-radio-button
+    >
+  </mat-radio-group>
+</mat-expansion-panel>
