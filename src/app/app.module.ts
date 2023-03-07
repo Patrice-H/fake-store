@@ -7,6 +7,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSliderModule} from '@angular/material/slider';
+import {MatRadioModule} from '@angular/material/radio';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -20,6 +21,7 @@ import { Error404Component } from './error404/error404.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { RatingsComponent } from './ratings/ratings.component';
 import { FilteringComponent } from './filtering/filtering.component';
+import { SortingComponent } from './sorting/sorting.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,7 @@ import { FilteringComponent } from './filtering/filtering.component';
     BreadcrumbComponent,
     RatingsComponent,
     FilteringComponent,
+    SortingComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,6 +46,7 @@ import { FilteringComponent } from './filtering/filtering.component';
     MatDividerModule,
     MatCheckboxModule,
     MatSliderModule,
+    MatRadioModule,
     FormsModule,
     HttpClientModule,
   ],
