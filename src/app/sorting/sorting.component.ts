@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sorting.component.scss'],
 })
 export class SortingComponent implements OnInit {
+  panelLabel!: string;
   sortChoice!: string;
   sortKeys: any[] = [
     {
@@ -28,9 +29,11 @@ export class SortingComponent implements OnInit {
 
   ngOnInit() {
     this.sortChoice = 'default';
+    this.panelLabel = 'Sort by default';
   }
 
-  setSortChoice(): void {
-    console.log(this.sortChoice);
+  setPanelLabel(): void {
+    const choice = this.sortKeys.find((key) => key.value === this.sortChoice);
+    this.panelLabel = `Sort by ${choice.label.toLowerCase()}`;
   }
 }
