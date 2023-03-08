@@ -1,3 +1,4 @@
+<app-set-up></app-set-up>
 <section *ngIf="product$ | async">
   <h1>{{ product.title }}</h1>
   <div class="detail">
@@ -25,14 +26,13 @@
     </div>
   </div>
   <div class="thumbnail">
-    <div *ngFor="let image of product.images; index as i" 
-      class="{{ getThumbClasses(i) }}" 
+    <div
+      *ngFor="let image of product.images; index as i"
+      class="{{ getThumbClasses(i) }}"
       id="thumb-{{ i }}"
-      (click)="setActive(i)">
-      <img
-      src="{{ product.images[i] }}"
-      alt="{{ product.title }}"
-    />
+      (click)="setActive(i)"
+    >
+      <img src="{{ product.images[i] }}" alt="{{ product.title }}" />
     </div>
   </div>
 </section>
