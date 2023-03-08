@@ -22,6 +22,7 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { RatingsComponent } from './ratings/ratings.component';
 import { FilteringComponent } from './filtering/filtering.component';
 import { SortingComponent } from './sorting/sorting.component';
+import { SetUpComponent } from './set-up/set-up.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { SortingComponent } from './sorting/sorting.component';
     RatingsComponent,
     FilteringComponent,
     SortingComponent,
+    SetUpComponent,
   ],
   imports: [
     BrowserModule,
