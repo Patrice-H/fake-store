@@ -1,0 +1,11 @@
+.set-up {
+  display: inline-flex;
+  justify-content: space-between;
+  width: 100%;
+}
+app-breadcrumb,
+app-filtering,
+app-sorting {
+  display: inline-block;
+  width: 30%;
+}
