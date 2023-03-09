@@ -13,12 +13,14 @@ import { takeUntil } from 'rxjs/operators';
 export class ProductsListComponent implements OnInit, OnDestroy {
   productList!: Product[];
   productList$!: Observable<any>;
+  rubrics!: string[];
   private destroy$!: Subject<boolean>;
 
   constructor(private productsService: ProductsService) {}
 
   ngOnInit(): void {
     this.destroy$ = new Subject<boolean>();
+    this.rubrics = this.setRubrics();
     this.getProductsList();
   }
 
@@ -27,24 +29,29 @@ export class ProductsListComponent implements OnInit, OnDestroy {
     this.productList = [];
   }
 
-  getProductsList(): void {
-    const selectedMenu = window.location.href.split('/')[3];
+  setRubrics(): string[] {
     let rubrics: string[] = [];
     RUBRIC_CATEGORIES.forEach((rubric) => {
       rubrics.push(rubric.name);
     });
-    if (selectedMenu === '' || rubrics.includes(selectedMenu)) {
+
+    return rubrics;
+  }
+
+  getProductsList(): void {
+    const selectedMenu = window.location.href.split('/')[3];
+    if (selectedMenu === '' || this.rubrics.includes(selectedMenu)) {
       this.productList$ = this.productsService.getAllProducts();
     } else {
       this.productList$ =
         this.productsService.getProductsByCategory(selectedMenu);
     }
-    this.setList(rubrics, selectedMenu);
+    this.setList(selectedMenu);
   }
 
-  setList(rubrics: string[], selectedMenu: string): void {
+  setList(selectedMenu: string): void {
     this.productList$.pipe(takeUntil(this.destroy$)).subscribe((value) => {
-      if (rubrics.includes(selectedMenu)) {
+      if (this.rubrics.includes(selectedMenu)) {
         let rubric: any | undefined = RUBRIC_CATEGORIES.find(
           (rubric) => rubric.name === selectedMenu
         );
