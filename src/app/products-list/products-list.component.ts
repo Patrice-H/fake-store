@@ -13,14 +13,14 @@ import { takeUntil } from 'rxjs/operators';
 export class ProductsListComponent implements OnInit, OnDestroy {
   productList!: Product[];
   productList$!: Observable<any>;
-  rubrics!: string[];
+  rubricsList!: string[];
   private destroy$!: Subject<boolean>;
 
   constructor(private productsService: ProductsService) {}
 
   ngOnInit(): void {
     this.destroy$ = new Subject<boolean>();
-    this.rubrics = this.setRubrics();
+    this.rubricsList = this.setRubrics();
     this.getProductsList();
   }
 
@@ -40,7 +40,7 @@ export class ProductsListComponent implements OnInit, OnDestroy {
 
   getProductsList(): void {
     const selectedMenu = window.location.href.split('/')[3];
-    if (selectedMenu === '' || this.rubrics.includes(selectedMenu)) {
+    if (selectedMenu === '' || this.rubricsList.includes(selectedMenu)) {
       this.productList$ = this.productsService.getAllProducts();
     } else {
       this.productList$ =
@@ -51,7 +51,7 @@ export class ProductsListComponent implements OnInit, OnDestroy {
 
   setList(selectedMenu: string): void {
     this.productList$.pipe(takeUntil(this.destroy$)).subscribe((value) => {
-      if (this.rubrics.includes(selectedMenu)) {
+      if (this.rubricsList.includes(selectedMenu)) {
         let rubric: any | undefined = RUBRIC_CATEGORIES.find(
           (rubric) => rubric.name === selectedMenu
         );
