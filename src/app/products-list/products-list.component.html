@@ -1,4 +1,4 @@
-<app-set-up></app-set-up>
+<app-set-up *ngIf="productList" [productList]="productList"></app-set-up>
 <section class="product-list">
   <app-product-card
     *ngFor="let product of productList"
