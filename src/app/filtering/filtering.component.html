@@ -1,34 +1,46 @@
 <mat-expansion-panel class="filter">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Filter by
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-    <div>
-        <mat-divider></mat-divider>
-        <p class="expansion-panel-title">Brand</p>
-        <mat-checkbox *ngFor="let brand of brands; index as i" class="brand-checkbox">{{brands[i]}}</mat-checkbox>
-        <mat-divider></mat-divider>
-        <p class="expansion-panel-title">Price</p>
-        <mat-slider min="200" max="500" class="price-slider">
-            <input [(ngModel)]="minPrice" matSliderStartThumb>
-            <input [(ngModel)]="maxPrice" matSliderEndThumb>
-        </mat-slider>
-        <div class="price-inputs">
-          <div>
-            <label for="min-price">Min.</label>
-            <p>
-              <input type="number" id="min-price" [(ngModel)]="minPrice" class="input-price">
-              <span> US$</span>
-            </p>
-          </div>
-          <div>
-            <label for="max-price">Max.</label>
-            <p>
-            <input type="number" id="max-price" [(ngModel)]="maxPrice" class="input-price">
-            <span> US$</span>
-          </p>
-          </div>       
-        </div>
+  <mat-expansion-panel-header>
+    <mat-panel-title> Filter by </mat-panel-title>
+  </mat-expansion-panel-header>
+  <div>
+    <mat-divider></mat-divider>
+    <p class="expansion-panel-title">Brand</p>
+    <div class="brands-section">
+      <mat-checkbox *ngFor="let brand of brandsList" class="brand-checkbox">{{
+        brand
+      }}</mat-checkbox>
     </div>
-  </mat-expansion-panel>
+    <mat-divider></mat-divider>
+    <p class="expansion-panel-title">Price</p>
+    <mat-slider min="200" max="500" class="price-slider">
+      <input [(ngModel)]="minPrice" matSliderStartThumb />
+      <input [(ngModel)]="maxPrice" matSliderEndThumb />
+    </mat-slider>
+    <div class="price-inputs">
+      <div>
+        <label for="min-price">Min.</label>
+        <p>
+          <input
+            type="number"
+            id="min-price"
+            [(ngModel)]="minPrice"
+            class="input-price"
+          />
+          <span> US$</span>
+        </p>
+      </div>
+      <div>
+        <label for="max-price">Max.</label>
+        <p>
+          <input
+            type="number"
+            id="max-price"
+            [(ngModel)]="maxPrice"
+            class="input-price"
+          />
+          <span> US$</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</mat-expansion-panel>
