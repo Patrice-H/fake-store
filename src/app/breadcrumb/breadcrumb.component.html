@@ -17,5 +17,7 @@
     >{{ currentCategory }}</span
   >
   <span *ngIf="isProductPage()" class="chevron"> > </span>
-  <span *ngIf="isProductPage()" class="reactive-link">{{ product.title }}</span>
+  <span *ngIf="isProductPage()" class="reactive-link">{{
+    product.title.toLowerCase()
+  }}</span>
 </p>
