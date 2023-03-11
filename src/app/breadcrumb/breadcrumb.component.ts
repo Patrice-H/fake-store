@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from '../models/product.model';
 import { ProductsService } from '../services/products.service';
@@ -10,13 +10,14 @@ import { Observable } from 'rxjs';
   templateUrl: './breadcrumb.component.html',
   styleUrls: ['./breadcrumb.component.scss'],
 })
-export class BreadcrumbComponent implements OnInit {
+export class BreadcrumbComponent implements OnInit, OnDestroy {
   rubrics!: string[];
   categories!: string[];
   currentRubric!: string | undefined;
   currentCategory!: string | undefined;
   product!: Product;
   product$!: Observable<any>;
+  path!: string;
 
   constructor(
     private productsService: ProductsService,
@@ -26,8 +27,13 @@ export class BreadcrumbComponent implements OnInit {
   ngOnInit(): void {
     this.rubrics = this.getAllRubrics();
     this.categories = this.getAllCategories();
+    this.path = this.router.url.split('/')[1].split('?')[0];
     this.getCurrentElements();
     window.addEventListener('click', () => this.getCurrentElements());
+  }
+
+  ngOnDestroy() {
+    this.path = '';
   }
 
   getAllRubrics(): string[] {
@@ -59,17 +65,16 @@ export class BreadcrumbComponent implements OnInit {
   }
 
   getCurrentElements(): void {
-    const urlArray = window.location.href.split('/');
-    if (urlArray.length === 4 && this.rubrics.includes(urlArray[3])) {
-      this.currentRubric = urlArray[3];
+    if (this.rubrics.includes(this.path)) {
+      this.currentRubric = this.path;
     }
-    if (urlArray.length === 4 && this.categories.includes(urlArray[3])) {
-      this.currentCategory = urlArray[3];
+    if (this.categories.includes(this.path)) {
+      this.currentCategory = this.path;
       this.currentRubric = this.setCurrentRubric(this.currentCategory);
     }
-    if (urlArray.length === 5 && urlArray[3] === 'product') {
+    if (this.path === 'product') {
       this.product$ = this.productsService.getProductById(
-        parseInt(urlArray[4])
+        parseInt(this.router.url.split('/')[2])
       );
       this.product$.subscribe((value) => {
         this.product = value;
@@ -79,22 +84,8 @@ export class BreadcrumbComponent implements OnInit {
     }
   }
 
-  isRubricPage(): boolean {
-    if (
-      window.location.href.split('/').length === 4 &&
-      this.rubrics.includes(window.location.href.split('/')[3])
-    ) {
-      return true;
-    }
-
-    return false;
-  }
-
   isCategoryPage(): boolean {
-    if (
-      window.location.href.split('/').length === 4 &&
-      this.categories.includes(window.location.href.split('/')[3])
-    ) {
+    if (this.categories.includes(this.path)) {
       return true;
     }
 
@@ -102,11 +93,7 @@ export class BreadcrumbComponent implements OnInit {
   }
 
   isProductPage(): boolean {
-    if (
-      window.location.href.split('/').length === 5 &&
-      window.location.href.split('/')[3] === 'product' &&
-      this.product !== undefined
-    ) {
+    if (this.path === 'product' && this.product !== undefined) {
       return true;
     }
 
@@ -114,12 +101,10 @@ export class BreadcrumbComponent implements OnInit {
   }
 
   isBreadCrumbNecessary(): boolean {
-    const urlArray = window.location.href.split('/');
     if (
-      urlArray.length >= 3 &&
-      (urlArray[3] === 'product' ||
-        this.rubrics.includes(urlArray[3]) ||
-        this.categories.includes(urlArray[3]))
+      this.path === 'product' ||
+      this.rubrics.includes(this.path) ||
+      this.categories.includes(this.path)
     ) {
       return true;
     }
