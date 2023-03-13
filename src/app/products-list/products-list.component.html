@@ -1,7 +1,7 @@
 <app-set-up *ngIf="productList" [productList]="productList"></app-set-up>
 <section class="product-list">
   <app-product-card
-    *ngFor="let product of productList"
+    *ngFor="let product of productsDisplayed"
     [product]="product"
   ></app-product-card>
 </section>
