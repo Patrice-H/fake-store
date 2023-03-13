@@ -5,8 +5,12 @@
   <div>
     <mat-divider></mat-divider>
     <p class="expansion-panel-title">Brand</p>
-    <div class="brands-section">
-      <mat-checkbox *ngFor="let brand of brandsList" class="brand-checkbox">{{
+    <div class="brands-section" [formGroup]="brandsForm">
+      <mat-checkbox *ngFor="let brand of brandsList" 
+        class="brand-checkbox" 
+        formControlName="{{formatBrandName(brand)}}"
+        (change)="filterByBrands()"
+      >{{
         brand
       }}</mat-checkbox>
     </div>
