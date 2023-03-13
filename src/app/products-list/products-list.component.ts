@@ -4,7 +4,7 @@ import { ProductsService } from '../services/products.service';
 import { RUBRIC_CATEGORIES } from 'src/data/constants';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-products-list',
@@ -16,13 +16,16 @@ export class ProductsListComponent implements OnInit, OnDestroy {
   productList$!: Observable<any>;
   productsDisplayed!: Product[];
   rubricsList!: string[];
-  brandsFilter!: string;
+  brandsFilter!: string | undefined;
   private destroy$!: Subject<boolean>;
 
   constructor(
     private productsService: ProductsService,
+    private router: Router,
     private activatedRoute: ActivatedRoute
   ) {
+    this.brandsFilter = undefined;
+    this.router.navigate([this.router.url.split('/')[1].split('?')[0]]);
     this.activatedRoute.queryParams.subscribe((params: any) => {
       let filter = params;
       this.brandsFilter = filter.brands;
@@ -39,10 +42,14 @@ export class ProductsListComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.destroy$.next(true);
     this.productList = [];
+    this.brandsFilter = undefined;
   }
 
   setProductsDisplayed() {
     let products: Product[] = [];
+    if (this.productList === undefined) {
+      return;
+    }
     if (this.brandsFilter === undefined) {
       this.productsDisplayed = this.productList;
     } else {
@@ -68,7 +75,7 @@ export class ProductsListComponent implements OnInit, OnDestroy {
   }
 
   getProductsList(): void {
-    const selectedMenu = window.location.href.split('/')[3].split('?')[0];
+    const selectedMenu = this.router.url.split('/')[1].split('?')[0];
     if (selectedMenu === '' || this.rubricsList.includes(selectedMenu)) {
       this.productList$ = this.productsService.getAllProducts();
     } else {
