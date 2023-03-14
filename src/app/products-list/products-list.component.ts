@@ -46,23 +46,17 @@ export class ProductsListComponent implements OnInit, OnDestroy {
   }
 
   setProductsDisplayed() {
-    let products: Product[] = [];
     if (this.productList === undefined) {
       return;
     }
-    if (this.brandsFilter === undefined) {
-      this.productsDisplayed = this.productList;
-    } else {
-      const filters = this.brandsFilter.split('-');
-      filters.forEach((filter) => {
-        this.productList.forEach((product) => {
-          if (this.formatBrandName(product.brand) === filter) {
-            products.push(product);
-          }
-        });
-      });
-      this.productsDisplayed = products;
+    let brands: string[] = [];
+    if (this.brandsFilter !== undefined) {
+      brands = this.brandsFilter.split('-');
     }
+    this.productsDisplayed = this.productsService.filterByBrands(
+      this.productList,
+      brands
+    );
   }
 
   setRubrics(): string[] {
@@ -100,9 +94,5 @@ export class ProductsListComponent implements OnInit, OnDestroy {
       }
       this.setProductsDisplayed();
     });
-  }
-
-  formatBrandName(brand: string) {
-    return brand.toLowerCase().split(' ').join('');
   }
 }

@@ -37,4 +37,21 @@ export class ProductsService {
 
     return productsList;
   }
+
+  filterByBrands(products: Product[], brands: string[]): Product[] {
+    let productsList: Product[] = [];
+    if (brands.length > 0) {
+      brands.forEach((brand) => {
+        products.forEach((product) => {
+          if (product.brand.toLowerCase().split(' ').join('') === brand) {
+            productsList.push(product);
+          }
+        });
+      });
+    } else {
+      productsList = products;
+    }
+
+    return productsList;
+  }
 }
