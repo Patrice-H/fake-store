@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Product } from '../models/product.model';
+import { ProductsService } from '../services/products.service';
 
 @Component({
   selector: 'app-set-up',
@@ -12,10 +13,12 @@ export class SetUpComponent implements OnInit {
   minPrice!: number;
   maxPrice!: number;
 
+  constructor(private productsService: ProductsService) {}
+
   ngOnInit() {
     this.brandsList = this.getProductsBrands();
-    this.minPrice = this.getMinPrice();
-    this.maxPrice = this.getMaxPrice();
+    this.minPrice = this.productsService.getMinPrice(this.productList);
+    this.maxPrice = this.productsService.getMaxPrice(this.productList);
   }
 
   getProductsBrands() {
@@ -27,27 +30,5 @@ export class SetUpComponent implements OnInit {
     });
 
     return brands;
-  }
-
-  getMinPrice() {
-    let price: number = Number.MAX_VALUE;
-    this.productList.forEach((product) => {
-      if (product.price < price) {
-        price = product.price;
-      }
-    });
-
-    return price;
-  }
-
-  getMaxPrice() {
-    let price: number = 0;
-    this.productList.forEach((product) => {
-      if (product.price > price) {
-        price = product.price;
-      }
-    });
-
-    return price;
   }
 }

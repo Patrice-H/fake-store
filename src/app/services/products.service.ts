@@ -25,6 +25,28 @@ export class ProductsService {
     return this.http.get<any>(`https://dummyjson.com/products/${id}`);
   }
 
+  getMinPrice(products: Product[]) {
+    let price: number = Number.MAX_VALUE;
+    products.forEach((product) => {
+      if (product.price < price) {
+        price = product.price;
+      }
+    });
+
+    return price;
+  }
+
+  getMaxPrice(products: Product[]) {
+    let price: number = 0;
+    products.forEach((product) => {
+      if (product.price > price) {
+        price = product.price;
+      }
+    });
+
+    return price;
+  }
+
   filterByRubric(products: Product[], rubric: string[]): Product[] {
     let productsList: Product[] = [];
     rubric.forEach((category) => {
