@@ -9,15 +9,19 @@ import { Router } from '@angular/router';
 })
 export class FilteringComponent implements OnInit {
   @Input() brandsList!: string[];
+  @Input() minPrice!: number;
+  @Input() maxPrice!: number;
   brandsFilter!: string[];
   brandsForm!: FormGroup;
-  minPrice: number = 200;
-  maxPrice: number = 400;
+  minPriceFilter!: number;
+  maxPriceFilter!: number;
 
   constructor(private formBuilder: FormBuilder, private router: Router) {}
 
   ngOnInit() {
     this.brandsForm = this.formBuilder.group(this.initBrandsCheckbox());
+    this.minPriceFilter = this.minPrice;
+    this.maxPriceFilter = this.maxPrice;
   }
 
   initBrandsCheckbox() {
