@@ -10,44 +10,64 @@
         *ngFor="let brand of brandsList"
         class="brand-checkbox"
         formControlName="{{ formatBrandName(brand) }}"
-        (change)="filterByBrands()"
+        (change)="applyFilters()"
         >{{ brand }}</mat-checkbox
       >
     </div>
     <mat-divider></mat-divider>
     <p class="expansion-panel-title">Price</p>
-    <mat-slider min="{{ minPrice }}" max="{{ maxPrice }}" class="price-slider">
-      <input [(ngModel)]="minPriceFilter" matSliderStartThumb />
-      <input [(ngModel)]="maxPriceFilter" matSliderEndThumb />
-    </mat-slider>
-    <div class="price-inputs">
-      <div>
-        <label for="min-price">Min.</label>
-        <p>
-          <input
-            type="number"
-            id="min-price"
-            [(ngModel)]="minPriceFilter"
-            class="input-price"
-            min="{{ minPrice }}"
-            max="{{ maxPrice }}"
-          />
-          <span> US$</span>
-        </p>
-      </div>
-      <div>
-        <label for="max-price">Max.</label>
-        <p>
-          <input
-            type="number"
-            id="max-price"
-            [(ngModel)]="maxPriceFilter"
-            class="input-price"
-            min="{{ minPrice }}"
-            max="{{ maxPrice }}"
-          />
-          <span> US$</span>
-        </p>
+    <div [formGroup]="pricesForm">
+      <mat-slider
+        min="{{ minPrice }}"
+        max="{{ maxPrice }}"
+        class="price-slider"
+      >
+        <input
+          formControlName="min_price"
+          [(value)]="minPriceFilter"
+          matSliderStartThumb
+          (change)="applyFilters()"
+        />
+        <input
+          formControlName="max_price"
+          [(value)]="maxPriceFilter"
+          matSliderEndThumb
+          (change)="applyFilters()"
+        />
+      </mat-slider>
+      <div class="price-inputs">
+        <div>
+          <label for="min-price">Min.</label>
+          <p>
+            <input
+              type="number"
+              id="min-price"
+              class="input-price"
+              min="{{ minPrice }}"
+              max="{{ maxPrice }}"
+              formControlName="min_price"
+              value="{{ minPriceFilter }}"
+              (change)="applyFilters()"
+            />
+            <span> US$</span>
+          </p>
+        </div>
+        <div>
+          <label for="max-price">Max.</label>
+          <p>
+            <input
+              type="number"
+              id="max-price"
+              class="input-price"
+              min="{{ minPrice }}"
+              max="{{ maxPrice }}"
+              formControlName="max_price"
+              value="{{ maxPriceFilter }}"
+              (change)="applyFilters()"
+            />
+            <span> US$</span>
+          </p>
+        </div>
       </div>
     </div>
   </div>
