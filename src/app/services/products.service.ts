@@ -76,4 +76,14 @@ export class ProductsService {
 
     return productsList;
   }
+
+  filterByPrice(
+    products: Product[],
+    minPrice: number,
+    maxPrice: number
+  ): Product[] {
+    return products.filter(
+      (product) => product.price >= minPrice && product.price <= maxPrice
+    );
+  }
 }
