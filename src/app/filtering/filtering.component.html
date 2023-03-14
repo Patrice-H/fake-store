@@ -6,19 +6,19 @@
     <mat-divider></mat-divider>
     <p class="expansion-panel-title">Brand</p>
     <div class="brands-section" [formGroup]="brandsForm">
-      <mat-checkbox *ngFor="let brand of brandsList" 
-        class="brand-checkbox" 
-        formControlName="{{formatBrandName(brand)}}"
+      <mat-checkbox
+        *ngFor="let brand of brandsList"
+        class="brand-checkbox"
+        formControlName="{{ formatBrandName(brand) }}"
         (change)="filterByBrands()"
-      >{{
-        brand
-      }}</mat-checkbox>
+        >{{ brand }}</mat-checkbox
+      >
     </div>
     <mat-divider></mat-divider>
     <p class="expansion-panel-title">Price</p>
-    <mat-slider min="200" max="500" class="price-slider">
-      <input [(ngModel)]="minPrice" matSliderStartThumb />
-      <input [(ngModel)]="maxPrice" matSliderEndThumb />
+    <mat-slider min="{{ minPrice }}" max="{{ maxPrice }}" class="price-slider">
+      <input [(ngModel)]="minPriceFilter" matSliderStartThumb />
+      <input [(ngModel)]="maxPriceFilter" matSliderEndThumb />
     </mat-slider>
     <div class="price-inputs">
       <div>
@@ -27,8 +27,10 @@
           <input
             type="number"
             id="min-price"
-            [(ngModel)]="minPrice"
+            [(ngModel)]="minPriceFilter"
             class="input-price"
+            min="{{ minPrice }}"
+            max="{{ maxPrice }}"
           />
           <span> US$</span>
         </p>
@@ -39,8 +41,10 @@
           <input
             type="number"
             id="max-price"
-            [(ngModel)]="maxPrice"
+            [(ngModel)]="maxPriceFilter"
             class="input-price"
+            min="{{ minPrice }}"
+            max="{{ maxPrice }}"
           />
           <span> US$</span>
         </p>
