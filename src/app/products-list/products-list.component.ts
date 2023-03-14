@@ -12,11 +12,13 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./products-list.component.scss'],
 })
 export class ProductsListComponent implements OnInit, OnDestroy {
-  productList!: Product[];
   productList$!: Observable<any>;
+  productList!: Product[];
   productsDisplayed!: Product[];
   rubricsList!: string[];
   brandsFilter!: string | undefined;
+  minPrice!: number;
+  maxPrice!: number;
   private destroy$!: Subject<boolean>;
 
   constructor(
@@ -29,6 +31,8 @@ export class ProductsListComponent implements OnInit, OnDestroy {
     this.activatedRoute.queryParams.subscribe((params: any) => {
       let filter = params;
       this.brandsFilter = filter.brands;
+      this.minPrice = Number(filter.min_price);
+      this.maxPrice = Number(filter.max_price);
       this.setProductsDisplayed();
     });
   }
@@ -46,6 +50,7 @@ export class ProductsListComponent implements OnInit, OnDestroy {
   }
 
   setProductsDisplayed() {
+    let products: Product[] = [];
     if (this.productList === undefined) {
       return;
     }
@@ -53,10 +58,19 @@ export class ProductsListComponent implements OnInit, OnDestroy {
     if (this.brandsFilter !== undefined) {
       brands = this.brandsFilter.split('-');
     }
-    this.productsDisplayed = this.productsService.filterByBrands(
-      this.productList,
-      brands
+    if (isNaN(this.minPrice)) {
+      this.minPrice = this.productsService.getMinPrice(this.productList);
+    }
+    if (isNaN(this.maxPrice)) {
+      this.maxPrice = this.productsService.getMaxPrice(this.productList);
+    }
+    products = this.productsService.filterByBrands(this.productList, brands);
+    products = this.productsService.filterByPrice(
+      products,
+      this.minPrice,
+      this.maxPrice
     );
+    this.productsDisplayed = products;
   }
 
   setRubrics(): string[] {
