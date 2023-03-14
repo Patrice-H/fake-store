@@ -9,9 +9,13 @@ import { Product } from '../models/product.model';
 export class SetUpComponent implements OnInit {
   @Input() productList!: Product[];
   brandsList!: string[];
+  minPrice!: number;
+  maxPrice!: number;
 
   ngOnInit() {
     this.brandsList = this.getProductsBrands();
+    this.minPrice = this.getMinPrice();
+    this.maxPrice = this.getMaxPrice();
   }
 
   getProductsBrands() {
@@ -23,5 +27,27 @@ export class SetUpComponent implements OnInit {
     });
 
     return brands;
+  }
+
+  getMinPrice() {
+    let price: number = Number.MAX_VALUE;
+    this.productList.forEach((product) => {
+      if (product.price < price) {
+        price = product.price;
+      }
+    });
+
+    return price;
+  }
+
+  getMaxPrice() {
+    let price: number = 0;
+    this.productList.forEach((product) => {
+      if (product.price > price) {
+        price = product.price;
+      }
+    });
+
+    return price;
   }
 }
