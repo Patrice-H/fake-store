@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Product } from '../models/product.model';
 import { ProductsService } from '../services/products.service';
@@ -14,10 +15,18 @@ export class ProductComponent implements OnInit {
   highPrice!: number;
   displayedImage!: string;
 
-  constructor(private productsService: ProductsService) {}
+  constructor(
+    private productsService: ProductsService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     const id = parseInt(window.location.href.split('/')[4]);
+    if (isNaN(id) || id > 100 || id < 1) {
+      this.router.navigate(['/error']);
+
+      return;
+    }
     this.product$ = this.productsService.getProductById(id);
     this.product$.subscribe((value) => {
       this.product = value;
