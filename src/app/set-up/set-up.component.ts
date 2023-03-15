@@ -16,19 +16,8 @@ export class SetUpComponent implements OnInit {
   constructor(private productsService: ProductsService) {}
 
   ngOnInit() {
-    this.brandsList = this.getProductsBrands();
+    this.brandsList = this.productsService.getProductsBrands(this.productList);
     this.minPrice = this.productsService.getMinPrice(this.productList);
     this.maxPrice = this.productsService.getMaxPrice(this.productList);
-  }
-
-  getProductsBrands() {
-    let brands: string[] = [];
-    this.productList.forEach((product) => {
-      if (!brands.includes(product.brand)) {
-        brands.push(product.brand);
-      }
-    });
-
-    return brands;
   }
 }
