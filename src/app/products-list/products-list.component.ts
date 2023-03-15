@@ -90,10 +90,6 @@ export class ProductsListComponent implements OnInit, OnDestroy {
       this.productList$ =
         this.productsService.getProductsByCategory(selectedMenu);
     }
-    this.setList(selectedMenu);
-  }
-
-  setList(selectedMenu: string): void {
     this.productList$.pipe(takeUntil(this.destroy$)).subscribe((value) => {
       if (this.rubricsList.includes(selectedMenu)) {
         let rubric: any | undefined = RUBRIC_CATEGORIES.find(
