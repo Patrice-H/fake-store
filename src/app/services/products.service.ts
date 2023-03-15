@@ -36,6 +36,17 @@ export class ProductsService {
     return price;
   }
 
+  getProductsBrands(products: Product[]) {
+    let brands: string[] = [];
+    products.forEach((product) => {
+      if (!brands.includes(product.brand)) {
+        brands.push(product.brand);
+      }
+    });
+
+    return brands;
+  }
+
   getMaxPrice(products: Product[]) {
     let price: number = 0;
     products.forEach((product) => {
