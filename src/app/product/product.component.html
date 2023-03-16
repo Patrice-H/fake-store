@@ -6,6 +6,7 @@
       <img src="{{ displayedImage }}" alt="{{ product.title }}" />
     </div>
     <div class="detail-text">
+      <app-ratings [vote]="product.rating"></app-ratings>
       <p>
         <span class="subtitle">Description : </span>
         <span>{{ product.description }}</span>
