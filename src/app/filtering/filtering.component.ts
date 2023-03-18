@@ -1,6 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
 import { filteringService } from '../services/filtering.service';
 
 @Component({
@@ -12,17 +11,25 @@ export class FilteringComponent implements OnInit {
   @Input() brandsList!: string[];
   @Input() minPrice!: number;
   @Input() maxPrice!: number;
+  @Output() filteringEvent = new EventEmitter<string>();
   brandsForm!: FormGroup;
   pricesForm!: FormGroup;
   brandsFilter!: string[];
   minPriceFilter!: number;
   maxPriceFilter!: number;
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private filteringService: filteringService) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private filteringService: filteringService
+  ) {}
 
   ngOnInit() {
-    this.brandsForm = this.formBuilder.group(this.filteringService.initBrandsCheckbox(this.brandsList));
-    this.pricesForm = this.formBuilder.group(this.filteringService.initPricesInput(this.minPrice, this.maxPrice));
+    this.brandsForm = this.formBuilder.group(
+      this.filteringService.initBrandsCheckbox(this.brandsList)
+    );
+    this.pricesForm = this.formBuilder.group(
+      this.filteringService.initPricesInput(this.minPrice, this.maxPrice)
+    );
     this.minPriceFilter = this.minPrice;
     this.maxPriceFilter = this.maxPrice;
   }
@@ -41,24 +48,20 @@ export class FilteringComponent implements OnInit {
   }
 
   applyFilters() {
-    this.brandsFilter = this.filteringService.setBrandsFilter(this.brandsList, this.brandsForm);
+    this.brandsFilter = this.filteringService.setBrandsFilter(
+      this.brandsList,
+      this.brandsForm
+    );
     this.setPricesFilter();
-    const url = this.router.url.split('?')[0];
-    if (
-      this.brandsFilter.length > 0 ||
-      this.minPriceFilter > this.minPrice ||
-      this.maxPriceFilter < this.maxPrice
-    ) {
-      this.router.navigate([url], { queryParams: this.getParams() });
-    } else {
-      this.router.navigate([url]);
-    }
+    this.filteringEvent.emit(this.getParams());
   }
 
   getParams() {
     const params: any = {};
     if (this.brandsFilter.length > 0) {
-      params.brands = this.filteringService.encodeBrandsFilter(this.brandsFilter);
+      params.brands = this.filteringService.encodeBrandsFilter(
+        this.brandsFilter
+      );
     }
     if (this.minPriceFilter > this.minPrice) {
       params.min_price = this.minPriceFilter;
