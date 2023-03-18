@@ -4,6 +4,7 @@
     [brandsList]="brandsList"
     [minPrice]="minPrice"
     [maxPrice]="maxPrice"
+    (filteringEvent)="filterProducts($event)"
   ></app-filtering>
-  <app-sorting></app-sorting>
+  <app-sorting (sortingEvent)="sortProducts($event)"></app-sorting>
 </div>
