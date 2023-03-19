@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { sortingService } from '../services/sorting.service';
 
 @Component({
   selector: 'app-sorting',
@@ -9,37 +10,18 @@ export class SortingComponent implements OnInit {
   @Output() sortingEvent = new EventEmitter<string>();
   panelLabel!: string;
   sortChoice!: string;
-  sortKeys: any[] = [
-    {
-      label: 'Default',
-      value: 'default',
-    },
-    {
-      label: 'Ascending price',
-      value: 'asc-price',
-    },
-    {
-      label: 'Decreasing price',
-      value: 'desc-price',
-    },
-    {
-      label: 'Best rating',
-      value: 'rating',
-    },
-  ];
+  sortKeys!: any[];
+
+  constructor(private sortingService: sortingService) {}
 
   ngOnInit() {
+    this.sortKeys = this.sortingService.sortKeys;
     this.sortChoice = 'default';
     this.panelLabel = 'Sort by default';
   }
 
   defineSorting(value: any) {
+    this.panelLabel = this.sortingService.setPanelLabel(value);
     this.sortingEvent.emit(value);
-    this.setPanelLabel(value);
-  }
-
-  setPanelLabel(value: any): void {
-    const choice = this.sortKeys.find((key) => key.value === value);
-    this.panelLabel = `Sort by ${choice.label.toLowerCase()}`;
   }
 }
