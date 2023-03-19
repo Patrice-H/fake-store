@@ -21,8 +21,8 @@ export class ProductComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    const id = parseInt(window.location.href.split('/')[4]);
-    if (isNaN(id) || id > 100 || id < 1) {
+    const id = parseInt(this.router.url.split('/')[2]);
+    if (this.productsService.isInvalidId(id)) {
       this.router.navigate(['/error']);
 
       return;

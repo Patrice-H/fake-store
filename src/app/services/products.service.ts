@@ -124,4 +124,12 @@ export class ProductsService {
         return products;
     }
   }
+
+  isInvalidId(id: number): boolean {
+    if (isNaN(id) || id > 100 || id < 1) {
+      return true;
+    }
+
+    return false;
+  }
 }
