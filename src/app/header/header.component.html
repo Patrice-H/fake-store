@@ -2,7 +2,14 @@
   <a class="header-img" routerLink="">
     <img src="../../assets/logo.png" alt="logo" />
   </a>
-  <div class="menu">
+  <div class="header-wrapper">
+    <div class="header-wrapper-top">
+      <div class="search-product"></div>
+      <mat-divider [vertical]="true"></mat-divider>
+      <img src="../../assets/user.png" alt="user" />
+      <mat-divider [vertical]="true"></mat-divider>
+      <img src="../../assets/cart.png" alt="cart" />
+    </div>
     <app-navbar></app-navbar>
   </div>
 </header>

@@ -1,15 +1,35 @@
 header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 50px;
+  margin: 10px 0;
+  display: flex;
+  gap: 30px;
+  padding: 0 50px;
 }
 .header-img {
-    width: 14%;
-    img {
-        width: 100%;
-    }
+  width: 125px;
+  img {
+    width: 100%;
+  }
 }
-.menu {
-    margin: auto;
+.header-wrapper {
+  flex-grow: 1;
+}
+.header-wrapper-top {
+  display: flex;
+  justify-content: flex-end;
+  img {
+    width: 50px;
+  }
+}
+.search-product {
+  height: 48px;
+  flex-grow: 1;
+  border: solid 1px #ba00ba;
+}
+mat-divider {
+  margin: 0 30px;
+}
+app-navbar {
+  display: block;
+  margin-top: 10px;
+  background-color: #ba00ba;
 }

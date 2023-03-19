@@ -1,15 +1,22 @@
+.navbar {
+  display: flex;
+  width: 100%;
+  max-width: 900px;
+  justify-content: space-between;
+  margin: auto;
+}
 .rubric {
-    border: none;
-    cursor: pointer;
-    background-color: #ba00ba;
-    color: white;
-    font-weight: bold;
-    font-size: 18px;
-    padding: 10px;
+  border: none;
+  cursor: pointer;
+  background-color: #ba00ba;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 14.5px 10px;
 }
 .rubric:hover {
-    color: yellow;
+  color: yellow;
 }
 .mat-mdc-menu-content {
-    background-color: #ffbfff !important;
+  background-color: #ffbfff !important;
 }
