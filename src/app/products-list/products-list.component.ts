@@ -19,6 +19,7 @@ export class ProductsListComponent implements OnInit, OnDestroy {
   brandsFilter!: string | undefined;
   minPrice!: number;
   maxPrice!: number;
+  sortKey!: string;
   private destroy$!: Subject<boolean>;
 
   constructor(
@@ -33,6 +34,7 @@ export class ProductsListComponent implements OnInit, OnDestroy {
       this.brandsFilter = filter.brands;
       this.minPrice = Number(filter.min_price);
       this.maxPrice = Number(filter.max_price);
+      this.sortKey = filter.sort;
       this.setProductsDisplayed();
     });
   }
@@ -70,6 +72,7 @@ export class ProductsListComponent implements OnInit, OnDestroy {
       this.minPrice,
       this.maxPrice
     );
+    products = this.productsService.sortProducts(products, this.sortKey);
     this.productsDisplayed = products;
   }
 
