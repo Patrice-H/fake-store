@@ -33,7 +33,6 @@ export class SetUpComponent implements OnInit {
       this.params.sort = sortKey;
     }
     this.applySettings();
-    console.log(this.params);
   }
 
   filterProducts(filterKey: any) {
@@ -53,7 +52,6 @@ export class SetUpComponent implements OnInit {
       delete this.params.max_price;
     }
     this.applySettings();
-    console.log(this.params);
   }
 
   applySettings(): void {
