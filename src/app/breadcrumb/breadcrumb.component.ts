@@ -65,6 +65,7 @@ export class BreadcrumbComponent implements OnInit, OnDestroy {
   }
 
   getCurrentElements(): void {
+    const id = parseInt(this.router.url.split('/')[2]);
     if (this.rubrics.includes(this.path)) {
       this.currentRubric = this.path;
     }
@@ -72,10 +73,8 @@ export class BreadcrumbComponent implements OnInit, OnDestroy {
       this.currentCategory = this.path;
       this.currentRubric = this.setCurrentRubric(this.currentCategory);
     }
-    if (this.path === 'product') {
-      this.product$ = this.productsService.getProductById(
-        parseInt(this.router.url.split('/')[2])
-      );
+    if (this.path === 'product' && !this.productsService.isInvalidId(id)) {
+      this.product$ = this.productsService.getProductById(id);
       this.product$.subscribe((value) => {
         this.product = value;
         this.currentCategory = this.product.category;
