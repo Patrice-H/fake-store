@@ -97,4 +97,25 @@ export class ProductsService {
       (product) => product.price >= minPrice && product.price <= maxPrice
     );
   }
+
+  sortProducts(products: Product[], sortKey: string): Product[] {
+    switch (sortKey) {
+      case 'default':
+        return products;
+      case 'asc-price':
+        return products.sort((a, b) => {
+          return a.price - b.price;
+        });
+      case 'desc-price':
+        return products.sort((a, b) => {
+          return b.price - a.price;
+        });
+      case 'rating':
+        return products.sort((a, b) => {
+          return b.rating - a.rating;
+        });
+      default:
+        return products;
+    }
+  }
 }
