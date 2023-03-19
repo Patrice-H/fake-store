@@ -30,18 +30,12 @@ export class ProductComponent implements OnInit {
     this.product$ = this.productsService.getProductById(id);
     this.product$.subscribe((value) => {
       this.product = value;
-      this.highPrice = this.getHighPrice(
+      this.highPrice = this.productsService.getHighPrice(
         this.product.price,
         this.product.discountPercentage
       );
       this.displayedImage = this.product.images[this.product.images.length - 1];
     });
-  }
-
-  getHighPrice(price: number, discount: number): number {
-    const hp = price / (1 - discount / 100);
-
-    return parseFloat(hp.toFixed(2));
   }
 
   getThumbClasses(id: number): string {

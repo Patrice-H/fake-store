@@ -58,6 +58,12 @@ export class ProductsService {
     return price;
   }
 
+  getHighPrice(price: number, discount: number): number {
+    const hp = price / (1 - discount / 100);
+
+    return parseFloat(hp.toFixed(2));
+  }
+
   filterByRubric(products: Product[], rubric: string[]): Product[] {
     let productsList: Product[] = [];
     rubric.forEach((category) => {
