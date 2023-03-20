@@ -20,6 +20,9 @@ header {
     width: 50px;
   }
 }
+.header-wrapper-top img:hover {
+  cursor: pointer;
+}
 .search-product {
   height: 48px;
   flex-grow: 1;
