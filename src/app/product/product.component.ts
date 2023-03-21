@@ -58,4 +58,22 @@ export class ProductComponent implements OnInit {
     activeThumb?.classList.add('active-thumbnail');
     this.displayedImage = this.product.images[id];
   }
+
+  addToCart() {
+    // @ts-ignore
+    const items = JSON.parse(localStorage.getItem('order'));
+    const newItem = {
+      ...this.product,
+      quantity: 1,
+    };
+    let order: any[] = [];
+
+    if (items !== null) {
+      items.forEach((item: any) => {
+        order.push(item);
+      });
+    }
+    order.push(newItem);
+    localStorage.setItem('order', JSON.stringify(order));
+  }
 }
