@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CartComponent } from './cart/cart.component';
 import { Error404Component } from './error404/error404.component';
 import { ProductComponent } from './product/product.component';
 import { ProductsListComponent } from './products-list/products-list.component';
@@ -35,6 +36,7 @@ const routes: Routes = [
   { path: 'sunglasses', component: ProductsListComponent },
   { path: 'groceries', component: ProductsListComponent },
   { path: 'product/:id', component: ProductComponent },
+  { path: 'cart', component: CartComponent },
   { path: '**', component: Error404Component },
 ];
 
