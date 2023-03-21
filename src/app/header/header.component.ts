@@ -10,6 +10,6 @@ export class HeaderComponent {
   constructor(private router: Router) {}
 
   goToCartPage() {
-    console.log('cart');
+    this.router.navigate(['cart']);
   }
 }
