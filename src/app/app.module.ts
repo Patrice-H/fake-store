@@ -23,6 +23,7 @@ import { RatingsComponent } from './ratings/ratings.component';
 import { FilteringComponent } from './filtering/filtering.component';
 import { SortingComponent } from './sorting/sorting.component';
 import { SetUpComponent } from './set-up/set-up.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { SetUpComponent } from './set-up/set-up.component';
     FilteringComponent,
     SortingComponent,
     SetUpComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,
