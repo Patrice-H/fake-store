@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Product } from '../models/product.model';
+import { cartService } from '../services/cart.service';
 import { ProductsService } from '../services/products.service';
 
 @Component({
@@ -17,7 +18,8 @@ export class ProductComponent implements OnInit {
 
   constructor(
     private productsService: ProductsService,
-    private router: Router
+    private router: Router,
+    private cartService: cartService
   ) {}
 
   ngOnInit() {
@@ -60,8 +62,7 @@ export class ProductComponent implements OnInit {
   }
 
   addToCart() {
-    // @ts-ignore
-    const items = JSON.parse(localStorage.getItem('order'));
+    const items = this.cartService.getItems();
     const newItem = {
       ...this.product,
       quantity: 1,
