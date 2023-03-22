@@ -1,0 +1,17 @@
+<div class="item-card">
+  <div class="item-card-img">
+    <img src="{{ item.thumbnail }}" alt="{{ item.title }}" />
+  </div>
+  <div class="item-card-txt">
+    <h2>{{ item.title }}</h2>
+    <label for="item-quantity">Quantity</label>
+    <input type="number" id="item-quantity" value="{{ item.quantity }}" />
+    <p>Delete</p>
+  </div>
+  <div class="item-card-price">
+    <p>
+      <span>{{ item.price }}</span>
+      <span> US$</span>
+    </p>
+  </div>
+</div>
