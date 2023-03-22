@@ -8,4 +8,9 @@ export class cartService {
     // @ts-ignore
     return JSON.parse(localStorage.getItem('order'));
   }
+  deleteItem(id: number) {
+    const items = this.getItems();
+    const order = items.filter((item) => item.id !== id);
+    localStorage.setItem('order', JSON.stringify(order));
+  }
 }
