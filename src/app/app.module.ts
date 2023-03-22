@@ -9,6 +9,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatRadioModule } from '@angular/material/radio';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
@@ -24,6 +25,8 @@ import { FilteringComponent } from './filtering/filtering.component';
 import { SortingComponent } from './sorting/sorting.component';
 import { SetUpComponent } from './set-up/set-up.component';
 import { CartComponent } from './cart/cart.component';
+import { CartItemComponent } from './cart-item/cart-item.component';
+import { CartSummaryComponent } from './cart-summary/cart-summary.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +43,8 @@ import { CartComponent } from './cart/cart.component';
     SortingComponent,
     SetUpComponent,
     CartComponent,
+    CartItemComponent,
+    CartSummaryComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,6 +56,7 @@ import { CartComponent } from './cart/cart.component';
     MatCheckboxModule,
     MatSliderModule,
     MatRadioModule,
+    MatTableModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
