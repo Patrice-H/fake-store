@@ -1,0 +1,7 @@
+<h1 class="cart-title">Your cart</h1>
+<section class="cart-container">
+  <div class="cart-items-container">
+    <app-cart-item *ngFor="let item of items" [item]="item"></app-cart-item>
+  </div>
+  <app-cart-summary [items]="items"></app-cart-summary>
+</section>
