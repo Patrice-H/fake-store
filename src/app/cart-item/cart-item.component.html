@@ -5,8 +5,16 @@
   <div class="item-card-txt">
     <h2>{{ item.title }}</h2>
     <label for="item-quantity">Quantity</label>
-    <input type="number" id="item-quantity" value="{{ item.quantity }}" />
-    <p (click)="deleteItem()">Delete</p>
+    <input
+      #quantity
+      type="number"
+      id="item-quantity"
+      value="{{ item.quantity }}"
+      min="1"
+      max="{{ item.stock }}"
+      (change)="updateItem(quantity.value)"
+    />
+    <p (click)="deleteItem()" class="delete-btn">Delete</p>
   </div>
   <div class="item-card-price">
     <p>
