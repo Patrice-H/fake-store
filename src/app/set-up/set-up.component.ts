@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from '../models/product.model';
 import { ProductsService } from '../services/products.service';
+import { filteringService } from '../services/filtering.service';
 
 @Component({
   selector: 'app-set-up',
@@ -11,12 +12,14 @@ import { ProductsService } from '../services/products.service';
 export class SetUpComponent implements OnInit {
   @Input() productList!: Product[];
   brandsList!: string[];
+  brandsFiltersList!: string[];
   minPrice!: number;
   maxPrice!: number;
   params: any = {};
 
   constructor(
     private productsService: ProductsService,
+    private filteringService: filteringService,
     private router: Router
   ) {}
 
@@ -35,6 +38,19 @@ export class SetUpComponent implements OnInit {
     this.applySettings();
   }
 
+  setBrandsFiltersList(filters: string | undefined): void {
+    let filterList: any[] = [];
+    if (filters !== undefined) {
+      filters.split('-').forEach((filter) => {
+        let filterName = this.brandsList.find(
+          (brand) => this.filteringService.formatBrandName(brand) === filter
+        );
+        filterList.push(filterName);
+      });
+    }
+    this.brandsFiltersList = filterList;
+  }
+
   filterProducts(filterKey: any) {
     if (filterKey.brands) {
       this.params.brands = filterKey.brands;
@@ -51,6 +67,7 @@ export class SetUpComponent implements OnInit {
     } else {
       delete this.params.max_price;
     }
+    this.setBrandsFiltersList(filterKey.brands);
     this.applySettings();
   }
 

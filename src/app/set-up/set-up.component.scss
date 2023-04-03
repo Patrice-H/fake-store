@@ -9,3 +9,24 @@ app-sorting {
   display: inline-block;
   width: 30%;
 }
+.tag-filter {
+  text-align: center;
+  margin-top: 15px;
+  span {
+    padding: 5px 10px;
+    background-color: #ba00ba;
+    color: white;
+    border-radius: 12px;
+    margin-left: 5px;
+  }
+  span::after {
+    content: "\002716";
+    cursor: pointer;
+    margin-left: 15px;
+
+    &:hover {
+      font-weight: bold;
+      color: yellow;
+    }
+  }
+}

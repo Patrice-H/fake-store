@@ -1,10 +1,15 @@
-<div class="set-up">
-  <app-breadcrumb></app-breadcrumb>
-  <app-filtering
-    [brandsList]="brandsList"
-    [minPrice]="minPrice"
-    [maxPrice]="maxPrice"
-    (filteringEvent)="filterProducts($event)"
-  ></app-filtering>
-  <app-sorting (sortingEvent)="sortProducts($event)"></app-sorting>
+<div>
+  <div class="set-up">
+    <app-breadcrumb></app-breadcrumb>
+    <app-filtering
+      [brandsList]="brandsList"
+      [minPrice]="minPrice"
+      [maxPrice]="maxPrice"
+      (filteringEvent)="filterProducts($event)"
+    ></app-filtering>
+    <app-sorting (sortingEvent)="sortProducts($event)"></app-sorting>
+  </div>
+  <div class="tag-filter">
+    <span *ngFor="let brand of brandsFiltersList">{{ brand }}</span>
+  </div>
 </div>
