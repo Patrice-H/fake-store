@@ -62,26 +62,28 @@ export class ProductComponent implements OnInit {
   }
 
   addToCart() {
-    let items = this.cartService.getItems();
     const newItem = {
       ...this.product,
       quantity: 1,
     };
-    const oldItem = items.find((item) => item.id === this.product.id);
-    if (oldItem !== undefined) {
-      newItem.quantity = oldItem.quantity + 1;
-      items = items.filter((item) => item.id !== oldItem.id);
-    }
+    if (confirm(`Add ${newItem.title} to cart ?`)) {
+      let items = this.cartService.getItems();
+      const oldItem = items.find((item) => item.id === this.product.id);
+      if (oldItem !== undefined) {
+        newItem.quantity = oldItem.quantity + 1;
+        items = items.filter((item) => item.id !== oldItem.id);
+      }
 
-    let order: any[] = [];
+      let order: any[] = [];
 
-    if (items !== null) {
-      items.forEach((item: any) => {
-        order.push(item);
-      });
+      if (items !== null) {
+        items.forEach((item: any) => {
+          order.push(item);
+        });
+      }
+      order.push(newItem);
+      order.sort((a, b) => a.id - b.id);
+      localStorage.setItem('order', JSON.stringify(order));
     }
-    order.push(newItem);
-    order.sort((a, b) => a.id - b.id);
-    localStorage.setItem('order', JSON.stringify(order));
   }
 }
