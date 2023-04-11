@@ -27,6 +27,7 @@ import { SetUpComponent } from './set-up/set-up.component';
 import { CartComponent } from './cart/cart.component';
 import { CartItemComponent } from './cart-item/cart-item.component';
 import { CartSummaryComponent } from './cart-summary/cart-summary.component';
+import { TagFiltersComponent } from './tag-filters/tag-filters.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { CartSummaryComponent } from './cart-summary/cart-summary.component';
     CartComponent,
     CartItemComponent,
     CartSummaryComponent,
+    TagFiltersComponent,
   ],
   imports: [
     BrowserModule,
