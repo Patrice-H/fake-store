@@ -1,0 +1,27 @@
+.tag-bar {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+}
+.tag-filter {
+  span {
+    padding: 5px 10px;
+    background-color: #ba00ba;
+    color: white;
+    border-radius: 12px 0 0 12px;
+    margin-left: 5px;
+  }
+  button {
+    border: none;
+    border-radius: 0 12px 12px 0;
+    color: white;
+    background-color: #ba00ba;
+    font-weight: bold;
+    padding: 6px 8px 6px 6px;
+    &:hover {
+      cursor: pointer;
+      color: red;
+      background-color: rgba($color: #ba00ba, $alpha: 0.7);
+    }
+  }
+}
