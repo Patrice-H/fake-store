@@ -1,0 +1,6 @@
+<div class="tag-bar">
+  <div *ngFor="let brand of brandsFilters" class="tag-filter">
+    <span>{{ brand }}</span>
+    <button (click)="deleteFilter(brand)">&#x2716;</button>
+  </div>
+</div>
