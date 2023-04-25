@@ -26,5 +26,6 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
   </table>
-  <button type="button">Order</button>
+  <button *ngIf="items.length === 0" type="button" class="invalid">Order</button>
+  <button *ngIf="items.length > 0" type="button" class="valid">Order</button>
 </div>

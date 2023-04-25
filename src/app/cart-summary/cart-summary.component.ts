@@ -17,10 +17,16 @@ export class CartSummaryComponent {
 
   getTotalCost(): number {
     let total = 0;
-    this.items.forEach((item: any) => {
-      total += item.price * item.quantity;
-    });
+    if (this.items !== null) {
+      this.items.forEach((item: any) => {
+        total += item.price * item.quantity;
+      });
+    }
 
     return total;
+  }
+
+  isCartEmpty(): boolean {
+    return this.getTotalCost() === 0;
   }
 }
