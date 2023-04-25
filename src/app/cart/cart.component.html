@@ -1,6 +1,7 @@
 <h1 class="cart-title">Your cart</h1>
 <section class="cart-container">
   <div class="cart-items-container">
+    <img *ngIf="items.length === 0" src="../../assets/empty_cart.png" alt="cart is empty" id="empty-cart">
     <app-cart-item
       *ngFor="let item of items"
       [item]="item"
