@@ -8,6 +8,7 @@
 }
 .cart-items-container {
   width: 50%;
+  text-align: center;
 }
 app-cart-item {
   display: block;
@@ -15,4 +16,7 @@ app-cart-item {
 app-cart-summary {
   display: block;
   width: 50%;
+}
+#empty-cart {
+  width: 80%;
 }
