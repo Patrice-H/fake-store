@@ -10,7 +10,7 @@
         *ngFor="let brand of brandsList"
         class="brand-checkbox"
         formControlName="{{ formatBrandName(brand) }}"
-        (change)="applyFilters()"
+        (change)="applyFilters(formatBrandName(brand))"
         >{{ brand }}</mat-checkbox
       >
     </div>
@@ -26,13 +26,13 @@
           formControlName="min_price"
           [(value)]="minPriceFilter"
           matSliderStartThumb
-          (change)="applyFilters()"
+          (change)="setPricesFilter()"
         />
         <input
           formControlName="max_price"
           [(value)]="maxPriceFilter"
           matSliderEndThumb
-          (change)="applyFilters()"
+          (change)="setPricesFilter()"
         />
       </mat-slider>
       <div class="price-inputs">
@@ -47,7 +47,7 @@
               max="{{ maxPrice }}"
               formControlName="min_price"
               value="{{ minPriceFilter }}"
-              (change)="applyFilters()"
+              (change)="setPricesFilter()"
             />
             <span> US$</span>
           </p>
@@ -63,7 +63,7 @@
               max="{{ maxPrice }}"
               formControlName="max_price"
               value="{{ maxPriceFilter }}"
-              (change)="applyFilters()"
+              (change)="setPricesFilter()"
             />
             <span> US$</span>
           </p>
