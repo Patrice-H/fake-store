@@ -67,8 +67,12 @@ export class ProductComponent implements OnInit {
       quantity: 1,
     };
     if (confirm(`Add ${newItem.title} to cart ?`)) {
+      let oldItem: any;
       let items = this.cartService.getItems();
-      const oldItem = items.find((item) => item.id === this.product.id);
+      if (items !== null) {
+        oldItem = items.find((item) => item.id === this.product.id);
+      }
+      
       if (oldItem !== undefined) {
         newItem.quantity = oldItem.quantity + 1;
         items = items.filter((item) => item.id !== oldItem.id);
