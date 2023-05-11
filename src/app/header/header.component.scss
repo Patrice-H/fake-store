@@ -24,9 +24,42 @@ header {
   cursor: pointer;
 }
 .search-product {
+  position: relative;
   height: 48px;
   flex-grow: 1;
   border: solid 1px #ba00ba;
+}
+#search-btn {
+  width: 50px;
+  height: 48px;
+  position: absolute;
+  right: 0;
+  background-color: #ba00ba;
+  background-image: url(../../assets/search.png);
+  cursor: pointer;
+  &:hover {
+    background-image: url(../../assets/search-hover.png);
+  }
+}
+#user-btn {
+  width: 50px;
+  height: 50px;
+  background-image: url(../../assets/user.png);
+  background-size: contain;
+  cursor: pointer;
+  &:hover {
+    background-image: url(../../assets/user-hover.png);
+  }
+}
+#cart-btn {
+  width: 50px;
+  height: 50px;
+  background-image: url(../../assets/cart.png);
+  background-size: contain;
+  cursor: pointer;
+  &:hover {
+    background-image: url(../../assets/cart-hover.png);
+  }
 }
 mat-divider {
   margin: 0 30px;

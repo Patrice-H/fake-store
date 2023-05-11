@@ -4,11 +4,13 @@
   </a>
   <div class="header-wrapper">
     <div class="header-wrapper-top">
-      <div class="search-product"></div>
+      <div class="search-product">
+        <div id="search-btn"></div>
+      </div>
       <mat-divider [vertical]="true"></mat-divider>
-      <img src="../../assets/user.png" alt="user" />
+      <div id="user-btn"></div>
       <mat-divider [vertical]="true"></mat-divider>
-      <img src="../../assets/cart.png" alt="cart" (click)="goToCartPage()" />
+      <div id="cart-btn" (click)="goToCartPage()"></div>
     </div>
     <app-navbar></app-navbar>
   </div>
