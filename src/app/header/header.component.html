@@ -5,7 +5,8 @@
   <div class="header-wrapper">
     <div class="header-wrapper-top">
       <div class="search-product">
-        <div id="search-btn"></div>
+        <input type="text" [formControl]="search" />
+        <div id="search-btn" (click)="searchItems()"></div>
       </div>
       <mat-divider [vertical]="true"></mat-divider>
       <div id="user-btn"></div>
