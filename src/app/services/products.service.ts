@@ -132,4 +132,15 @@ export class ProductsService {
 
     return false;
   }
+
+  searchByBrand(products: Product[], search: string | undefined): Product[] {
+    let response: Product[] = products;
+    if (search !== undefined) {
+      response = products.filter((product) =>
+        product.brand.toLowerCase().includes(search.toLowerCase())
+      );
+    }
+
+    return response;
+  }
 }
