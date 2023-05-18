@@ -143,4 +143,15 @@ export class ProductsService {
 
     return response;
   }
+
+  searchByCategory(products: Product[], search: string | undefined) {
+    let response: Product[] = products;
+    if (search !== undefined) {
+      response = products.filter((product) =>
+        product.category.toLowerCase().includes(search.toLowerCase())
+      );
+    }
+
+    return response;
+  }
 }
