@@ -24,16 +24,24 @@ header {
   cursor: pointer;
 }
 .search-product {
+  display: flex;
   position: relative;
   height: 48px;
   flex-grow: 1;
   border: solid 1px #ba00ba;
+  & input {
+    font-size: 24px;
+    flex-grow: 1;
+    border: none;
+    padding: 0 10px;
+    &:focus {
+      outline: none;
+    }
+  }
 }
 #search-btn {
   width: 50px;
   height: 48px;
-  position: absolute;
-  right: 0;
   background-color: #ba00ba;
   background-image: url(../../assets/search.png);
   cursor: pointer;
