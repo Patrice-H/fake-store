@@ -165,4 +165,28 @@ export class ProductsService {
 
     return [];
   }
+
+  researchProducts(products: Product[], search: string | undefined) {
+    let productsSearched: Product[] = [];
+    this.searchByBrand(products, search).forEach((product) => {
+      if (!productsSearched.includes(product)) {
+        productsSearched.push(product);
+      }
+    });
+    this.searchByCategory(products, search).forEach((product) => {
+      if (!productsSearched.includes(product)) {
+        productsSearched.push(product);
+      }
+    });
+    this.searchByDescription(products, search).forEach((product) => {
+      if (!productsSearched.includes(product)) {
+        productsSearched.push(product);
+      }
+    });
+    if (search === undefined) {
+      productsSearched = products;
+    }
+
+    return productsSearched;
+  }
 }
