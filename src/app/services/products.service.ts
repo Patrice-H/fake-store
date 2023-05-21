@@ -134,38 +134,35 @@ export class ProductsService {
   }
 
   searchByBrand(products: Product[], search: string | undefined): Product[] {
-    let response: Product[] = products;
     if (search !== undefined) {
-      response = products.filter((product) =>
+      return products.filter((product) =>
         product.brand.toLowerCase().includes(search.toLowerCase())
       );
     }
 
-    return response;
+    return [];
   }
 
   searchByCategory(products: Product[], search: string | undefined) {
-    let response: Product[] = products;
     if (search !== undefined) {
-      response = products.filter((product) =>
+      return products.filter((product) =>
         product.category.toLowerCase().includes(search.toLowerCase())
       );
     }
 
-    return response;
+    return [];
   }
 
   searchByDescription(
     products: Product[],
     search: string | undefined
   ): Product[] {
-    let response: Product[] = products;
     if (search !== undefined) {
-      response = products.filter((product) =>
+      return products.filter((product) =>
         product.description.toLowerCase().includes(search.toLowerCase())
       );
     }
 
-    return response;
+    return [];
   }
 }
