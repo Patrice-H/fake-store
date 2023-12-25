@@ -14,6 +14,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class ProductsListComponent implements OnInit, OnDestroy {
   productList$!: Observable<any>;
   productList!: Product[];
+  productsSearched!: any;
   productsDisplayed!: Product[];
   rubricsList!: string[];
   brandsFilter!: string | undefined;
@@ -21,6 +22,7 @@ export class ProductsListComponent implements OnInit, OnDestroy {
   maxPrice!: number;
   sortKey!: string;
   private destroy$!: Subject<boolean>;
+  search$!: Observable<any>;
 
   constructor(
     private productsService: ProductsService,
@@ -43,6 +45,11 @@ export class ProductsListComponent implements OnInit, OnDestroy {
     this.destroy$ = new Subject<boolean>();
     this.rubricsList = this.setRubrics();
     this.getProductsList();
+    this.productsService.getSearch().subscribe((value) => console.log(value));
+    /*
+    this.productsSearched = this.activatedRoute.data.subscribe((value) =>
+      console.log(value)
+    );*/
   }
 
   ngOnDestroy(): void {
