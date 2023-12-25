@@ -7,6 +7,8 @@ import { Product } from '../models/product.model';
   providedIn: 'root',
 })
 export class ProductsService {
+  searchP: string | undefined = undefined;
+
   constructor(private http: HttpClient) {}
 
   getAllProducts(): Observable<any> {
@@ -186,7 +188,16 @@ export class ProductsService {
     if (search === undefined) {
       productsSearched = products;
     }
+    this.searchP = search;
 
     return productsSearched;
+  }
+
+  getSearch(): Observable<string> {
+    return new Observable((sub) => {
+      setTimeout(() => {
+        sub.next(this.searchP);
+      }, 10000);
+    });
   }
 }
